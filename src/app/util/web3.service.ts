@@ -1,10 +1,16 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
-declare let require: any;
+import {environment} from '../../environments/environment';
 const Web3 = require('web3');
+const HDWalletProvider = require('@truffle/hdwallet-provider');
 const contract = require('@truffle/contract');
 
+declare let require: any;
 declare let window: any;
+
+const mnemonic = environment.mnemonic.toString().trim();
+const provider = new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/${environment.infuraApiKey}`);
+
 
 @Injectable()
 export class Web3Service {
@@ -23,6 +29,7 @@ export class Web3Service {
   public bootstrapWeb3() {
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
     if (typeof window.ethereum !== 'undefined') {
+      console.log('hello!');
       // Use Mist/MetaMask's provider
       window.ethereum.enable().then(() => {
         this.web3 = new Web3(window.ethereum);
@@ -33,10 +40,10 @@ export class Web3Service {
       Web3.providers.HttpProvider.prototype.sendAsync = Web3.providers.HttpProvider.prototype.send;
       // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
       // tslint:disable-next-line:max-line-length
-      this.web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545')); // If you're using a centralized provider like Infura, you would use https://ropsten.infura.io/API_KEY
+      this.web3 = new Web3(provider); // If you're using a centralized provider like Infura, you would use https://ropsten.infura.io/API_KEY
     }
 
-    setInterval(() => this.refreshAccounts(), 100);
+    //setInterval(() => this.refreshAccounts(), 100);
   }
 
   public async artifactsToContract(artifacts) {
@@ -48,6 +55,7 @@ export class Web3Service {
 
     const contractAbstraction = contract(artifacts);
     contractAbstraction.setProvider(this.web3.currentProvider);
+    console.log(this.web3.currentProvider);
     return contractAbstraction;
 
   }
