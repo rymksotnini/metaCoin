@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {Category} from '../../../../_models/Category';
+
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DatePipe} from '@angular/common';
-import {CrudService} from '../../../../_services/crud.service';
+
 import {ActivatedRoute, Router} from '@angular/router';
-import {API_URL, CATEGORY, CHARITY, IMAGE, IMG_URL} from '../../../../_globals/global-variables';
-import {Project} from '../../../../_models/Project';
+
 import {HttpClient} from '@angular/common/http';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { UploadFile } from 'ng-zorro-antd/upload';
 import { Observable, Observer } from 'rxjs';
-import {ImageService} from "../../../../_services/image.service";
+import {Category} from '../../../../../_models/Category';
+import {Project} from '../../../../../_models/Project';
+import {CrudService} from '../../../../../_services/crud.service';
+import {API_URL, CATEGORY, CHARITY} from '../../../../../_globals/global-variables';
+
 
 
 @Component({
@@ -23,15 +26,15 @@ export class CharityUpdateComponent implements OnInit {
   date = null;
   dateFormat = 'yyyy/MM/dd';
   keys = Object.keys;
-  categories : Category[];
+  categories: Category[];
   createCharity: FormGroup;
-  id : number;
+  id: number;
   pipe = new DatePipe('en-US');
   file: any;
   test: any;
   project: Project;
   loading = false;
-  avatarUrl='assets/img/theme/team-4-800x800.jpg';
+  avatarUrl = 'assets/img/theme/team-4-800x800.jpg';
   loading1 = false;
   avatarUrl1: string;
   submitted = false;
@@ -41,8 +44,7 @@ export class CharityUpdateComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private http: HttpClient,
-              private msg: NzMessageService,
-              private imageService: ImageService,
+              private msg: NzMessageService
   ) {
     this.getProject();
   }
@@ -66,17 +68,17 @@ export class CharityUpdateComponent implements OnInit {
 
   }
 
-  initForm(){
+  initForm() {
     this.createCharity = this.formBuilder.group({
       name: [this.project.offer.name, Validators.required],
-      shortDescription: [this.project.offer.shortDescription,Validators.required],
-      longDescription: [this.project.offer.longDescription,Validators.required],
-      amount: [this.project.offer.amount,Validators.required],
-      minDonationAmount: [this.project.minDonationAmount,Validators.required],
-      maxDonationAmount: [this.project.maxDonationAmount,Validators.required],
+      shortDescription: [this.project.offer.shortDescription, Validators.required],
+      longDescription: [this.project.offer.longDescription, Validators.required],
+      amount: [this.project.offer.amount, Validators.required],
+      minDonationAmount: [this.project.minDonationAmount, Validators.required],
+      maxDonationAmount: [this.project.maxDonationAmount, Validators.required],
       categoriesIds: [this.project.offer.categories[0].id],
-      startDate: [this.project.startDate,Validators.required],
-      endDate: [this.project.endDate,Validators.required],
+      startDate: [this.project.startDate, Validators.required],
+      endDate: [this.project.endDate, Validators.required],
       date: []
     });
   }
@@ -87,7 +89,7 @@ export class CharityUpdateComponent implements OnInit {
      console.log(this.id);
     });
     const data = await this.http.get<any>(API_URL + CHARITY + '/' + this.id).toPromise();
-    console.log(data)
+    console.log(data);
     this.project = data.data;
     console.log(this.project);
     this.initForm();
@@ -122,7 +124,7 @@ export class CharityUpdateComponent implements OnInit {
        this.createCharity.value.endDate = this.pipe.transform(this.createCharity.value.date[1], 'yyyy-M-d hh:mm:ss');
      }
     console.log(this.createCharity.value);
-    this.crudService.update(API_URL + CHARITY,this.id , this.createCharity.value).subscribe(
+    this.crudService.update(API_URL + CHARITY, this.id , this.createCharity.value).subscribe(
       (response) => {
         console.log(response);
         this.router.navigate(['/admin/charity']);
@@ -148,7 +150,7 @@ export class CharityUpdateComponent implements OnInit {
       observer.next(isJpgOrPng && isLt2M);
       observer.complete();
     });
-  };
+  }
 
   private getBase64(img: File, callback: (img: string) => void): void {
     const reader = new FileReader();
@@ -165,7 +167,7 @@ export class CharityUpdateComponent implements OnInit {
         // Get this url from response in real world.
         this.getBase64(info.file!.originFileObj!, (img: string) => {
           this.loading = false;
-          console.log(img)
+          console.log(img);
           this.avatarUrl = img;
         });
         break;
@@ -176,7 +178,7 @@ export class CharityUpdateComponent implements OnInit {
     }
   }
 
-  //large image handler
+  // large image handler
 
   beforeUpload1 = (file: UploadFile, _fileList: UploadFile[]) => {
     return new Observable((observer: Observer<boolean>) => {
@@ -196,7 +198,7 @@ export class CharityUpdateComponent implements OnInit {
       observer.next(isJpgOrPng && isLt2M);
       observer.complete();
     });
-  };
+  }
 
 
 

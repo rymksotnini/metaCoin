@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {API_URL, BADGE} from '../../../../_globals/global-variables';
-import {CrudService} from '../../../../_services/crud.service';
-import {Badge} from '../../../../_models/badge';
-import {NzModalService} from "ng-zorro-antd";
+import {NzModalService} from 'ng-zorro-antd';
+import {Badge} from '../../../../../_models/badge';
+import {CrudService} from '../../../../../_services/crud.service';
+import {API_URL, BADGE} from '../../../../../_globals/global-variables';
 
 
 
@@ -14,7 +14,7 @@ import {NzModalService} from "ng-zorro-antd";
 export class BadgesListComponent implements OnInit {
   isVisible = false;
   isVisible2 = false;
-  selected:Badge;
+  selected: Badge;
   badges: Badge[];
   first = 0;
   cols: any[];
@@ -33,7 +33,7 @@ export class BadgesListComponent implements OnInit {
       { field: 'updatedAt', header: 'Updated At' },
       { field: 'action', header: '' }
     ];
-    console.log(this.badges)
+    console.log(this.badges);
   }
 
 
@@ -41,7 +41,7 @@ export class BadgesListComponent implements OnInit {
     this.crudService.delete(API_URL + BADGE, badge.id).subscribe(res => {
       badge.deleted = 1;
     }, error => {
-      console.log(error)
+      console.log(error);
     });
   }
 
@@ -52,7 +52,7 @@ export class BadgesListComponent implements OnInit {
     this.crudService.getAll(API_URL + BADGE)
       .toPromise()
       .then(res => res.data as Badge[])
-      .then(data => { return data; })
+      .then(data => data)
       .then(data => this.badges = data);
 
 
@@ -94,7 +94,7 @@ export class BadgesListComponent implements OnInit {
 
 
   onAdd($event: any) {
-    console.log($event)
+    console.log($event);
     this.getBadge();
   }
 

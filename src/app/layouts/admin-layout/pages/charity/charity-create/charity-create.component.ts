@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {Category} from '../../../../_models/Category';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {CrudService} from '../../../../_services/crud.service';
+
 import {Router} from '@angular/router';
-import {API_URL, CATEGORY, CHARITY, IMAGE} from '../../../../_globals/global-variables';
+
 import { DatePipe } from '@angular/common';
-import {ImageService} from "../../../../_services/image.service";
-import {NzMessageService} from "ng-zorro-antd";
+
+import {NzMessageService} from 'ng-zorro-antd';
 import { UploadFile } from 'ng-zorro-antd/upload';
 import { Observable, Observer } from 'rxjs';
+import {Category} from '../../../../../_models/Category';
+import {CrudService} from '../../../../../_services/crud.service';
+import {ImageService} from '../../../../../_services/image.service';
+import {API_URL, CATEGORY, CHARITY, IMAGE} from '../../../../../_globals/global-variables';
 @Component({
   selector: 'app-charity-create',
   templateUrl: './charity-create.component.html',
@@ -21,10 +24,10 @@ export class CharityCreateComponent implements OnInit {
   date = null;
   dateFormat = 'yyyy/MM/dd';
   keys = Object.keys;
-  categories : Category[];
+  categories: Category[];
   createCharity: FormGroup;
   pipe = new DatePipe('en-US');
-  idOffer:any;
+  idOffer: any;
   file: any;
   shortImage: any;
   largeImage: any;
@@ -35,7 +38,7 @@ export class CharityCreateComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private crudService: CrudService,
               private router: Router,
-              private imageService:ImageService,
+              private imageService: ImageService,
               private msg: NzMessageService
               ) { }
 
@@ -43,11 +46,11 @@ export class CharityCreateComponent implements OnInit {
     this.getCategories();
     this.createCharity = this.formBuilder.group({
       name: ['', Validators.required],
-      shortDescription: ['',Validators.required],
-      longDescription: ['',Validators.required],
-      amount: [0,Validators.required],
-      minDonationAmount: [0,Validators.required],
-      maxDonationAmount: [0,Validators.required],
+      shortDescription: ['', Validators.required],
+      longDescription: ['', Validators.required],
+      amount: [0, Validators.required],
+      minDonationAmount: [0, Validators.required],
+      maxDonationAmount: [0, Validators.required],
       categoriesIds: [1],
       date: []
     });
@@ -68,11 +71,11 @@ export class CharityCreateComponent implements OnInit {
     );
   }
 
-  fileEventShortFile(e){
+  fileEventShortFile(e) {
     this.shortImage = e.target.files[0];
 
   }
-  fileEventLargeFile(e){
+  fileEventLargeFile(e) {
     this.largeImage = e.target.files[0];
 
   }
@@ -94,8 +97,8 @@ export class CharityCreateComponent implements OnInit {
     this.crudService.post(API_URL + CHARITY, this.createCharity.value).subscribe(
       (data) => {
         this.idOffer = data.data.offer.id;
-        if(this.shortImage && this.largeImage){
-          this.imageService.postImageProject(this.largeImage,this.shortImage,this.idOffer,CHARITY + IMAGE).subscribe(data => {
+        if (this.shortImage && this.largeImage) {
+          this.imageService.postImageProject(this.largeImage, this.shortImage, this.idOffer, CHARITY + IMAGE).subscribe(data => {
             console.log(data);
           });
         }
@@ -124,7 +127,7 @@ export class CharityCreateComponent implements OnInit {
       observer.next(isJpgOrPng && isLt2M);
       observer.complete();
     });
-  };
+  }
 
   private getBase64(img: File, callback: (img: string) => void): void {
     const reader = new FileReader();
@@ -152,7 +155,7 @@ export class CharityCreateComponent implements OnInit {
   }
 
 
-  //large image handler
+  // large image handler
 
   beforeUpload1 = (file: UploadFile, _fileList: UploadFile[]) => {
     return new Observable((observer: Observer<boolean>) => {
@@ -172,7 +175,7 @@ export class CharityCreateComponent implements OnInit {
       observer.next(isJpgOrPng && isLt2M);
       observer.complete();
     });
-  };
+  }
 
 
 

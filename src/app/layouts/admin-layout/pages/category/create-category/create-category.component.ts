@@ -1,8 +1,9 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {CrudService} from '../../../../_services/crud.service';
-import {CategoryType} from '../../../../_models/enum/CategoryType';
-import {API_URL, CATEGORY} from '../../../../_globals/global-variables';
+import {CategoryType} from '../../../../../_models/enum/CategoryType';
+import {CrudService} from '../../../../../_services/crud.service';
+import {API_URL, CATEGORY} from '../../../../../_globals/global-variables';
+
 
 @Component({
   selector: 'app-create-category',
@@ -23,8 +24,8 @@ export class CreateCategoryComponent implements OnInit {
 
   ngOnInit() {
     this.createCategory = this.formBuilder.group({
-      name: ['',Validators.required],
-      type: ['PROJECT',Validators.required]
+      name: ['', Validators.required],
+      type: ['PROJECT', Validators.required]
     });
   }
 

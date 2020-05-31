@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {CrudService} from '../../../../_services/crud.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpParams} from '@angular/common/http';
-import {ACTIVATE, API_URL, CATEGORY, CHARITY, PAUSE, TERNINATE} from '../../../../_globals/global-variables';
-import {Project} from '../../../../_models/Project';
-import {ListReq} from '../../../../_models/requests/ListReq';
-import {ProjectStatus} from '../../../../_models/enum/ProjectStatus';
-import {NzModalService} from 'ng-zorro-antd/modal';
-import {Category} from "../../../../_models/Category";
-import {Offer} from "../../../../_models/offer";
+import {Project} from '../../../../../_models/Project';
+import {Offer} from '../../../../../_models/offer';
+import {ProjectStatus} from '../../../../../_models/enum/ProjectStatus';
+import {NzModalService} from 'ng-zorro-antd';
+import {ACTIVATE, API_URL, CHARITY, PAUSE, TERNINATE} from '../../../../../_globals/global-variables';
+import {CrudService} from '../../../../../_services/crud.service';
+
 
 @Component({
   selector: 'app-charities-list',
@@ -18,7 +17,7 @@ import {Offer} from "../../../../_models/offer";
 export class CharitiesListComponent implements OnInit {
 
   isVisible = false;
-  projects : Project[];
+  projects: Project[];
   offers: Offer[];
   currentPage: number;
   sizePage: number;
@@ -74,43 +73,40 @@ export class CharitiesListComponent implements OnInit {
 
   }
 
-  paginate(page: number) {
-    this.currentPage = page ;
-    this.getProjects();
-  }
+
 
 
   pauseProject(project: Project) {
-    this.crudService.update(API_URL +CHARITY + PAUSE, project.id, {} ).subscribe(
+    this.crudService.update(API_URL + CHARITY + PAUSE, project.id, {} ).subscribe(
       (response) => {
         this.getProjects();
       }  , (error =>  {
         console.log(error);
       })
-    )
+    );
   }
 
 
 
   activateProject(project: Project) {
 
-    this.crudService.update(API_URL +CHARITY + ACTIVATE, project.id, {} ).subscribe(
+    this.crudService.update(API_URL + CHARITY + ACTIVATE, project.id, {} ).subscribe(
       (response) => {
           this.getProjects();
       }  , (error =>  {
       console.log(error);
     })
-    )
+    );
   }
 
   endProject(project: Project) {
-    this.crudService.update(API_URL +CHARITY + TERNINATE, project.id, {} ).subscribe(
+    this.crudService.update(API_URL + CHARITY + TERNINATE, project.id, {} ).subscribe(
       (response) => {
         this.getProjects();
       }  , (error =>  {
         console.log(error);
       })
-    )
+    );
   }
 
   showTerminateConfirm(project: Project): void {

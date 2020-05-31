@@ -1,9 +1,10 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {API_URL, BADGE} from '../../../../_globals/global-variables';
+
 
 import {Router} from '@angular/router';
-import {CrudService} from '../../../../_services/crud.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {CrudService} from '../../../../../_services/crud.service';
+import {API_URL, BADGE} from '../../../../../_globals/global-variables';
 
 @Component({
   selector: 'app-badges-create',
@@ -23,8 +24,8 @@ export class BadgesCreateComponent implements OnInit {
 
   ngOnInit() {
     this.createBadge = this.formBuilder.group({
-      name:  ['',Validators.required],
-      upperBond: [0,Validators.required]
+      name:  ['', Validators.required],
+      upperBond: [0, Validators.required]
     });
   }
 
@@ -45,7 +46,7 @@ export class BadgesCreateComponent implements OnInit {
         this.added.emit(response);
       }, (error => {
         console.log(error);
-        if( error.status === 404){
+        if ( error.status === 404) {
           this.error = true;
           this.msg = 'Invalid Upper bound';
         }

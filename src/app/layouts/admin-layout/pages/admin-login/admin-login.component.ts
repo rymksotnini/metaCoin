@@ -1,9 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {User} from "../../_models/user";
-import {AuthenticationService} from "../../_services/authentication.service";
-import {Router} from "@angular/router";
-import {NgForm} from "@angular/forms";
-import {Role} from "../../_models/enum/Role";
+import {Router} from '@angular/router';
+import {NgForm} from '@angular/forms';
+import {User} from '../../../../_models/user';
+import {AuthenticationService} from '../../../../_services/authentication.service';
+import {Role} from '../../../../_models/enum/Role';
+
 
 @Component({
   selector: 'app-admin-login',
@@ -13,11 +14,11 @@ import {Role} from "../../_models/enum/Role";
 
 export class AdminLoginComponent implements OnInit, OnDestroy {
 
-  user :User;
+  user: User;
   error = false;
   textError = '';
 
-  constructor(private authenticationService: AuthenticationService, private router:Router) {}
+  constructor(private authenticationService: AuthenticationService, private router: Router) {}
 
   ngOnInit() {
   }
@@ -33,7 +34,7 @@ export class AdminLoginComponent implements OnInit, OnDestroy {
     this.user.password = form.controls.password.value;
     console.log(this.user);
     this.authenticationService.login(this.user).subscribe(
-      (result)=> {
+      (result) => {
         if (JSON.parse(result.body?.user)?.role !== Role.Admin) {
           this.error = true;
           this.textError = 'User is not admin';
@@ -43,18 +44,17 @@ export class AdminLoginComponent implements OnInit, OnDestroy {
           this.router.navigate(['/admin']);
         }
       },
-      (error)=> {
+      (error) => {
         this.error = true;
         if (error.status === 406) {
           this.textError = 'Invalid email or password';
         } else if (error.status === 401) {
           this.textError = 'Incorrect password or email';
-        }
-        else {
-          this.textError ='Error';
+        } else {
+          this.textError = 'Error';
         }
       }
-    )
+    );
 
   }
 }
