@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../../_models/user';
-import {CrudService} from '../../_services/crud.service';
-import {API_URL, CATEGORY, USERS} from '../../_globals/global-variables';
-import {ListReq} from '../../_models/requests/ListReq';
 import {MatSnackBar} from '@angular/material';
 import {HttpParams} from '@angular/common/http';
+import {ListReq} from '../../../../_models/requests/ListReq';
+import {User} from '../../../../_models/user';
+import {CrudService} from '../../../../_services/crud.service';
+import {API_URL, USERS} from '../../../../_globals/global-variables';
 
 @Component({
   selector: 'app-users',

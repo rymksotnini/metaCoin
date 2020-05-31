@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {CrudService} from '../../../../_services/crud.service';
-import {API_URL, CATEGORY, USERS} from '../../../../_globals/global-variables';
-import {Category} from '../../../../_models/Category';
 import {NzModalRef, NzModalService} from 'ng-zorro-antd';
 import {CreateCategoryComponent} from '../create-category/create-category.component';
+import {Category} from '../../../../../_models/Category';
+import {CrudService} from '../../../../../_services/crud.service';
+import {API_URL, CATEGORY} from '../../../../../_globals/global-variables';
 
 @Component({
   selector: 'app-list-category',

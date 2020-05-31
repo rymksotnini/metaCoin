@@ -1,9 +1,10 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {CrudService} from "../../../../_services/crud.service";
-import {Router} from "@angular/router";
-import {API_URL, BADGE, CHARITY} from "../../../../_globals/global-variables";
-import {Badge} from "../../../../_models/badge";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {Badge} from '../../../../../_models/badge';
+import {CrudService} from '../../../../../_services/crud.service';
+import {API_URL, BADGE} from '../../../../../_globals/global-variables';
+
 
 @Component({
   selector: 'app-badges-update',
@@ -24,18 +25,18 @@ export class BadgesUpdateComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.createBadge = this.formBuilder.group({
-      name:  ['',Validators.required],
-      upperBond: [0,Validators.required]
+      name:  ['', Validators.required],
+      upperBond: [0, Validators.required]
     });
 
   }
 
   ngOnChanges() {
     console.log(this.badge);
-    if (this.badge){
+    if (this.badge) {
       this.createBadge = this.formBuilder.group({
-        name:  [this.badge.name,Validators.required],
-        upperBond: [this.badge.upperBond,Validators.required]
+        name:  [this.badge.name, Validators.required],
+        upperBond: [this.badge.upperBond, Validators.required]
       });
     }
 
@@ -50,7 +51,7 @@ export class BadgesUpdateComponent implements OnInit, OnChanges {
       return;
     }
     console.log(this.createBadge.value);
-    this.crudService.update(API_URL + BADGE,this.badge.id, this.createBadge.value).subscribe(
+    this.crudService.update(API_URL + BADGE, this.badge.id, this.createBadge.value).subscribe(
       (response) => {
         this.error = false;
         this.added.emit(true);

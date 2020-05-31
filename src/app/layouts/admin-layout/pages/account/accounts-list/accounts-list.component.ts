@@ -5,6 +5,8 @@ import {AccountsCreateComponent} from '../accounts-create/accounts-create.compon
 import {ListReq} from '../../../../../_models/requests/ListReq';
 import {CrudService} from '../../../../../_services/crud.service';
 import {AccountsService} from '../../../../../_services/accounts.service';
+import {ACCOUNT, API_URL, DEFAULT_ACCOUNT} from '../../../../../_globals/global-variables';
+import {Account} from '../../../../../_models/account';
 
 
 @Component({
@@ -76,7 +78,7 @@ export class AccountsListComponent implements OnInit {
   }
 
   delete(account) {
-    this.crudService.delete(API_URL + ACCOUNT, account.id).subscribe(res => {
+    this.crudService.delete(API_URL + ACCOUNT , account.id).subscribe(res => {
       console.log(res);
       account.deleted = 1;
     }, error => {
