@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {API_URL, CATEGORY, CHARITY, DONATE, IMG_URL, USERS_PROFILE2} from '../../_globals/global-variables';
-import {Project} from '../../_models/Project';
-import {CrudService} from '../../_services/crud.service';
-import {NzModalRef, NzModalService} from 'ng-zorro-antd';
-import {CharityAmountComponent} from './charity-amount/charity-amount.component';
-import {AuthenticationService} from '../../_services/authentication.service';
-import {Profile} from "../../_models/profile";
+import {Project} from "../../../../../_models/Project";
+import {Profile} from "../../../../../_models/profile";
+import {CrudService} from "../../../../../_services/crud.service";
+import {NzModalRef, NzModalService} from "ng-zorro-antd";
+import {AuthenticationService} from "../../../../../_services/authentication.service";
 import {Router} from "@angular/router";
+import {API_URL, CHARITY, USERS_PROFILE2, IMG_URL} from "../../../../../_globals/global-variables";
+import {CharityAmountComponent} from "../charity-amount/charity-amount.component";
 
 @Component({
   selector: 'app-charity-projects',

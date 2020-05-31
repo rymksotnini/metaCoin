@@ -1,16 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
-// core components
-import {
-  chartOptions,
-  parseOptions,
-  chartExample1,
-  chartExample2
-} from '../../variables/charts';
-import {Project} from '../../_models/Project';
-import {HttpParams} from '@angular/common/http';
-import {API_URL, CHARITY} from '../../_globals/global-variables';
-import {CrudService} from '../../_services/crud.service';
+import {Project} from "../../../../_models/Project";
+import {CrudService} from "../../../../_services/crud.service";
+import {chartExample1, chartExample2, chartOptions, parseOptions} from "../../../../variables/charts";
+import {API_URL, CHARITY} from "../../../../_globals/global-variables";
 
 @Component({
   selector: 'app-dashboard',

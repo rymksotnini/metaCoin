@@ -1,19 +1,11 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {CrudService} from "../../../_services/crud.service";
+import {CrudService} from "../../../../../_services/crud.service";
 import {Router} from "@angular/router";
-import {AccountsService} from "../../../_services/accounts.service";
-import {
-  ACCOUNT,
-  ACCOUNT_WITH_TYPE,
-  API_URL,
-  CURRENT_ORGANIZATION,
-  DEFAULT_ACCOUNT,
-  DONATE
-} from "../../../_globals/global-variables";
-import {AccountType} from "../../../_models/accountType";
-import {Account} from "../../../_models/account";
-import {AuthenticationService} from "../../../_services/authentication.service";
+import {AccountsService} from "../../../../../_services/accounts.service";
+import {AuthenticationService} from "../../../../../_services/authentication.service";
+import {API_URL, DEFAULT_ACCOUNT, DONATE} from "../../../../../_globals/global-variables";
+
 
 @Component({
   selector: 'app-charity-amount',

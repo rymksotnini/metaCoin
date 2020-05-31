@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthenticationService} from "../../_services/authentication.service";
-import {User} from "../../_models/user";
-import {IMG_URL} from "../../_globals/global-variables";
-import {ImageService} from "../../_services/image.service";
+import {User} from "../../../../../_models/user";
+import {AuthenticationService} from "../../../../../_services/authentication.service";
+import {ImageService} from "../../../../../_services/image.service";
+import {IMG_URL} from "../../../../../_globals/global-variables";
 
 @Component({
   selector: 'app-user-profile',

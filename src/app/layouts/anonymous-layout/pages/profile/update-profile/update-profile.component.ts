@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {ImageService} from '../../_services/image.service';
-import {FormBuilder, FormGroup, NgForm} from '@angular/forms';
-import {AuthenticationService} from '../../_services/authentication.service';
-import {User} from '../../_models/user';
-import {API_URL, IMG_URL, USERS_PROFILE} from '../../_globals/global-variables';
-import {Gender} from '../../_models/enum/Gender';
-import {DatePipe} from '@angular/common';
-import {Profile} from '../../_models/profile';
-import {Address} from '../../_models/address';
-import {Country} from '../../_models/country';
-import {CrudService} from '../../_services/crud.service';
 import {Router} from "@angular/router";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {Gender} from "../../../../../_models/enum/Gender";
+import {User} from "../../../../../_models/user";
+import {Profile} from "../../../../../_models/profile";
+import {Address} from "../../../../../_models/address";
+import {Country} from "../../../../../_models/country";
+import {DatePipe} from "@angular/common";
+import {ImageService} from "../../../../../_services/image.service";
+import {AuthenticationService} from "../../../../../_services/authentication.service";
+import {CrudService} from "../../../../../_services/crud.service";
+import {API_URL, IMG_URL, USERS_PROFILE} from "../../../../../_globals/global-variables";
 
 @Component({
   selector: 'app-update-profile',

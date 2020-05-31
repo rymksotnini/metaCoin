@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import Chart from 'chart.js';
-import {chartExample1, chartExample2, chartOptions, parseOptions} from "../../../variables/charts";
-import {CreateComplainComponent} from "../../user/complain/create-complain/create-complain.component";
-import {ActivatedRoute} from "@angular/router";
-import {CrudService} from "../../../_services/crud.service";
-import {API_URL, CHARITY, PROJECT, TRANSACTIONS} from "../../../_globals/global-variables";
-import {Project} from "../../../_models/Project";
-import {Transaction} from "../../../_models/Transaction";
 import {NzModalRef, NzModalService} from "ng-zorro-antd";
+import {Project} from "../../../../_models/Project";
+import {Transaction} from "../../../../_models/Transaction";
+import {ActivatedRoute} from "@angular/router";
+import {CrudService} from "../../../../_services/crud.service";
+import {API_URL, CHARITY, PROJECT, TRANSACTIONS} from "../../../../_globals/global-variables";
+import {CreateComplainComponent} from "../complain/create-complain/create-complain.component";
 
 
 
