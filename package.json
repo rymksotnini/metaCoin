@@ -65,5 +65,10 @@
     "typescript": "3.7.5",
     "webpack": "^4.41.6",
     "webpack-dev-server": "^3.10.3"
-  }
+  },
+  "browser": {
+  "fs": false,
+  "path": false,
+  "os": false
+}
 }
