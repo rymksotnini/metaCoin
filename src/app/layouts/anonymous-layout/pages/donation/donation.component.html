@@ -1,0 +1,84 @@
+<div class="header bg-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+      <div class="row">
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row mt-5">
+    <div class="col-xl-8 mb-5 mb-xl-0">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col">
+              <h3 class="mb-0">Project Name: {{project?.offer?.name}} </h3>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <!-- Projects table -->
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+            <tr>
+              <th scope="col">UserName</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Total amount</th>
+              <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody *ngIf=transactions>
+            <tr *ngFor=" let transaction of transactions; let indexOfelement=index;">
+              <th scope="row">
+                {{transaction?.user?.username}}
+              </th>
+              <td>
+                {{transaction?.amount}}
+              </td>
+              <td>
+               {{calculateSum(indexOfelement)}}
+              </td>
+
+              <div ngbDropdown placement="auto">
+                <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                  <i class="fas fa-ellipsis-v"></i>
+                </a>
+                <div ngbDropdownMenu class=" dropdown-menu-left dropdown-menu-arrow">
+                  <a class="dropdown-item" (click)="open(transaction?.id)">Observation</a>
+                </div>
+              </div>
+            </tr>
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+<!--    <div class="col-xl-4">-->
+<!--      <div class="card shadow">-->
+<!--        <div class="card-header bg-transparent">-->
+<!--          <div class="row align-items-center">-->
+<!--            <div class="col">-->
+<!--              <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>-->
+<!--              <h2 class="mb-0">Total orders</h2>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="card-body">-->
+<!--          &lt;!&ndash; Chart &ndash;&gt;-->
+<!--          <div class="chart">-->
+<!--            <canvas id="chart-orders" class="chart-canvas"></canvas>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+  </div>
+
+
+  </div>
+

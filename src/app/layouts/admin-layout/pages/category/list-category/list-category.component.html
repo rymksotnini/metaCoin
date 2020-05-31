@@ -1,0 +1,101 @@
+
+
+
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="container-fluid d-flex align-items-center">
+        <div class="row">
+          <div class="col-lg-7 col-md-10">
+            <button nz-button [nzType]="'primary'" (click)="showModal()"><span>Add Category</span></button>
+            <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+              <app-create-category (added)="onAdd($event)"></app-create-category>
+            </nz-modal>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+
+  <!-- Table -->
+  <div class="row">
+    <div class="col-xl-12 order-xl-1">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h3 class="mb-0">Categories</h3>
+        </div>
+        <div class="table-responsive ">
+
+          <p-table #tt [autoLayout]="true"  class="table align-items-center table-flush"    [rowHover]="true" [columns]="cols" [value]="categories" [paginator]="true" [rows]="10"   [rowsPerPageOptions]="[1,5,10]">
+            <ng-template pTemplate="caption">
+
+              <input type="text" pInputText size="50" placeholder="Search" (input)="tt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+            </ng-template>
+
+            <ng-template class="thead-light" pTemplate="header" let-columns>
+              <tr>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field" [pSortableColumnDisabled]="col.field === 'action'"  >
+                  {{col.header}}
+                  <p-sortIcon  *ngIf="col.field !== 'action'"[field]="col.field"></p-sortIcon>
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+              <tr [pSelectableRow]="rowData">
+                <td *ngFor="let col of columns" [ngSwitch]="col.field">
+                  <ng-container *ngSwitchCase="'createdAt'">
+                    {{rowData[col.field] | date}}
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'updatedAt'">
+                    {{rowData[col.field] | date}}
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'deleted'">
+                    <span *ngIf="!rowData[col.field]" class="badge badge-dot">
+                  <i class="bg-success"></i> active
+                </span>
+                    <span *ngIf="rowData[col.field]" class="badge badge-dot mr-4">
+                  <i class="bg-danger"></i> deleted
+                </span>
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'action'">
+
+                    <div ngbDropdown placement="auto">
+                      <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                        <i class="fas fa-ellipsis-v"></i>
+                      </a>
+                      <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                        <a class="dropdown-item" (click)="showDeleteConfirm(rowData)">Delete</a>
+                      </div>
+                    </div>
+
+                  </ng-container>
+
+
+                  <ng-container      *ngSwitchDefault>
+                    {{rowData[col.field] }}
+                  </ng-container>
+
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+
+
+
+
+
+
+
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

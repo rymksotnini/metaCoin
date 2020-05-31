@@ -1,0 +1,151 @@
+<main>
+  <div class="position-relative">
+    <!-- shape Hero -->
+    <section class="section section-lg section-shaped pb-250">
+      <div class="shape shape-style-1 shape-clubisti">
+      </div>
+      <div class="container py-lg-md d-flex">
+
+        <div class="col px-0">
+          <div class="row row-grid justify-content-between">
+            <div class="col-md-5 mt-lg-5">
+              <div class="row">
+                <div class="col-lg-6 col-sm-12 px-2 py-2">
+                  <div class="card card1 card-stats">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-5 col-md-4">
+                          <div class="icon-big text-center">
+                            <i class="fas fa-coins background-blue"></i>
+                          </div>
+                        </div>
+                        <div class="col-7 col-md-8">
+                          <div class="numbers">
+                            <h2 class="card-title "><b class="background-blue">{{profile?.balance + profile?.totalDonatedAmount}} DT</b></h2>
+                            <p></p>
+                            <p class="card-category">My Installments</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 px-2 py-2">
+                  <div class="card card-stats upper bg-default">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-5 col-md-4">
+                          <div class="icon-big text-center icon-warning">
+                            <i class="fa fa-football-ball text-white"> </i>
+                          </div>
+                        </div>
+                        <div class="col-7 col-md-8">
+                          <div class="icon-big text-center icon-warning">
+                            <h1 class="card-title"><b>{{profile?.badge? profile?.badge?.name: 'No Badge'}}</b></h1>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 col-sm-12 px-2 py-2">
+                  <div class="card card1 card-stats">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-5 col-md-4">
+                          <div class="icon-big text-center icon-warning">
+                            <i class="fas fa-dollar-sign background-blue"></i>
+                          </div>
+                        </div>
+                        <div class="col-7 col-md-8">
+                          <div class="numbers">
+                            <h2 class="card-title"><b class="background-blue">{{profile?.balance}} DT</b></h2>
+                            <p></p>
+                            <p class="card-category">My Credit</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 px-2 py-2">
+                  <div class="card card1 card-stats">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-5 col-md-4">
+                          <div class="icon-big text-center icon-warning">
+                            <i class="fas fa-hand-holding-usd background-blue">
+                            </i>
+                          </div>
+                        </div>
+                        <div class="col-7 col-md-8">
+                          <div class="numbers">
+                            <h2 class="card-title"><b class="background-blue">{{profile?.totalDonatedAmount}} DT</b></h2>
+                            <p></p>
+                            <p class="card-category">My Donations</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- SVG separator -->
+      <div class="separator separator-bottom separator-skew">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <polygon class="fill-lighter" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
+    </section>
+    <!-- 1st Hero Variation -->
+  </div>
+  <section class="section section-lg pt-lg-0 mt--150">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <div class="row row-grid">
+            <div *ngFor="let project of projects" class="col-lg-3">
+
+              <div class="card card2 card-lift--hover shadow border-0">
+                <div >
+                  <img [src]="project?.offer?.shortImagePath?(IMG_URL + project?.offer?.shortImagePath):'assets/img/default.jpg'" alt="event-cover-photo" >
+                </div>
+                <div class="card-body">
+                  <h3 class="text-uppercase">{{project?.offer?.name}}</h3>
+                  <p class="description mt-3">{{project?.offer?.shortDescription}}</p>
+                  <div>
+                    <div class="progress-wrapper">
+                      <div class="progress-info">
+                        <div class="progress-label">
+                          <span>completion</span>
+                        </div>
+                        <div class="progress-percentage">
+                          <span>{{(project?.offer?.amount && project?.offer?.amount !==0)?(project?.lastUpdatedSum)*100/(project?.offer?.amount):0}}%</span>
+                        </div>
+                      </div>
+                      <ngb-progressbar (click)="details(project?.offer?.id)" type="primary" [value]="(project?.offer?.amount && project?.offer?.amount !==0)?(project?.lastUpdatedSum)*100/(project?.offer?.amount):0"></ngb-progressbar>
+                    </div>
+                  </div>
+                  <div class="row" style="width: 100%">
+                    <div class="col-lg-6">
+                      <a class="btn btn-danger mt-4" (click)="donate(project)">Donate</a>
+                    </div>
+                    <div class="col-lg-6">
+                      <a href="javascript:void(0)" class="btn btn-neutral mt-4">See Details</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

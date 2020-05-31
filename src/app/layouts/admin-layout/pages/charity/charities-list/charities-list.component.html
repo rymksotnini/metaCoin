@@ -1,0 +1,204 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->  <div class="container-fluid d-flex align-items-center">
+      <div class="row">
+        <div class="col-lg-7 col-md-10">
+          <a [routerLink]="['/admin/add-charity']" class="btn btn-info">Add new project</a>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h3 class="mb-0">Projects</h3>
+        </div>
+        <div class="table-responsive">
+<!--          <table class="table align-items-center table-flush">-->
+<!--            <thead class="thead-light">-->
+<!--            <tr>-->
+<!--              <th scope="col">Id</th>-->
+<!--              <th scope="col">Name</th>-->
+<!--              <th scope="col">Created At</th>-->
+<!--              <th scope="col">Updated At</th>-->
+<!--              <th scope="col">amount</th>-->
+<!--              <th scope="col">MIN DA</th>-->
+<!--              <th scope="col">MAX DA</th>-->
+<!--              <th scope="col">last updated sum</th>-->
+<!--              <th scope="col">start at</th>-->
+<!--              <th scope="col">end at</th>-->
+<!--              <th scope="col"> status</th>-->
+<!--              <th scope="col"> change status</th>-->
+<!--              <th scope="col">Controls</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody *ngIf="projects">-->
+<!--            <tr *ngFor="let project of projects.data">-->
+<!--              <th scope="row">-->
+<!--                <div class="media align-items-center">-->
+
+<!--                  <div class="media-body">-->
+<!--                    <span class="mb-0 text-sm">{{project.offer.name}}</span>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </th>-->
+<!--              <td>-->
+
+<!--                {{project.id}}-->
+
+<!--              </td>-->
+<!--              <td>-->
+
+<!--                {{project.offer.createdAt| date}}-->
+
+<!--              </td>-->
+
+<!--              <td>-->
+
+<!--                {{project.offer.updatedAt | date}}-->
+
+<!--              </td>-->
+<!--              <td>-->
+<!--                {{project.offer.amount}}-->
+<!--              </td>-->
+<!--              <td>-->
+<!--                {{project.minDonationAmount}}-->
+<!--              </td>-->
+<!--              <td>-->
+<!--                {{project.maxDonationAmount}}-->
+<!--              </td>-->
+<!--              <td>-->
+<!--                {{project.lastUpdatedSum}}-->
+<!--              </td>-->
+<!--              <td>-->
+<!--                {{project.startDate | date}}-->
+<!--              </td>-->
+<!--              <td>-->
+<!--                {{project.endDate | date}}-->
+<!--              </td>-->
+<!--              <td>-->
+<!--                {{project.status}}-->
+<!--              </td>-->
+<!--              <td>-->
+<!--                <a (click)="pauseProject(project)"  class="btn ant-btn-primary" *ngIf="(project.status !='PAUSED') && project.status!='TERMINATED'" >Pause</a>-->
+<!--                <a (click)="activateProject(project)"  class="btn btn-info" *ngIf="project.status!='ACTIVE' && project.status!='TERMINATED'">Activate</a>-->
+<!--                <a  nzType="dashed" (click)="showDeleteConfirm(project)" class="btn btn-warning" *ngIf="project.status!='TERMINATED'">Terminate</a>-->
+<!--              </td>-->
+<!--              <td>-->
+<!--                <a (click)="updateProject(project.id)"  class="btn ant-btn-primary" >Update</a>-->
+<!--&lt;!&ndash;                <a (click)="deleteProject(project.id)"  class="btn btn-info" >Delete</a>&ndash;&gt;-->
+
+<!--              </td>-->
+
+
+<!--            </tr>-->
+
+<!--            </tbody>-->
+<!--          </table>-->
+          <p-table #tt class="table align-items-center table-flush"  [autoLayout]="true"  [rowHover]="true" [columns]="cols" [value]="projects" [paginator]="true" [rows]="10"   [rowsPerPageOptions]="[1,5,10]">
+            <ng-template pTemplate="caption">
+
+              <input type="text" pInputText size="50" placeholder="Search" (input)="tt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+            </ng-template>
+
+            <ng-template class="thead-light" pTemplate="header" let-columns>
+              <tr>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field" [pSortableColumnDisabled]="col.field === 'action'"  >
+                  {{col.header}}
+                  <p-sortIcon  *ngIf="col.field !== 'action'"[field]="col.field"></p-sortIcon>
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+              <tr [pSelectableRow]="rowData">
+
+                <td *ngFor="let col of columns" [ngSwitch]="col.field">
+
+                  <ng-container *ngSwitchCase="'offer.name'">
+                    {{rowData['offer'].name}}
+                  </ng-container>
+
+                  <ng-container *ngSwitchCase="'offer.amount'">
+                    {{rowData['offer'].amount}}
+                  </ng-container>
+
+                  <ng-container *ngSwitchCase="'startDate'">
+                    {{rowData[col.field] | date}}
+                  </ng-container>
+
+                  <ng-container *ngSwitchCase="'endDate'">
+                    {{rowData[col.field] | date}}
+                  </ng-container>
+
+                  <ng-container *ngSwitchCase="'offer.createdAt'">
+                    {{rowData['offer'].createdAt | date}}
+                  </ng-container>
+
+
+                  <ng-container *ngSwitchCase="'offer.updatedAt'">
+                    {{rowData['offer'].updatedAt | date}}
+                  </ng-container>
+
+
+
+
+
+
+                  <ng-container *ngSwitchCase="'status'">
+                    <span *ngIf="(rowData['status'] ==='PAUSED')"class="badge badge-dot">
+                  <i class="bg-success"></i> {{rowData['status']}}
+                </span>
+                    <span *ngIf="(rowData['status'] ==='ACTIVE')"class="badge badge-dot">
+                  <i class="bg-primary"></i> {{rowData['status']}}
+                </span>
+                    <span *ngIf="(rowData['status'] ==='DELETED')" class="badge badge-dot mr-4">
+                  <i class="bg-danger"></i> {{rowData['status']}}
+                </span>
+                    <span *ngIf="(rowData['status'] ==='TERMINATED')"class="badge badge-dot">
+                  <i class="bg-warning"></i> {{rowData['status']}}
+                </span>
+                  </ng-container>
+
+                  <ng-container *ngSwitchCase="'action'">
+
+
+                    <div *ngIf="rowData['status']!='DELETED'" ngbDropdown placement="auto">
+                      <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                        <i class="fas fa-ellipsis-v"></i>
+                      </a>
+                      <div ngbDropdownMenu *ngIf="rowData['status']!='DELETED'"class=" dropdown-menu-right dropdown-menu-arrow">
+                        <a class="dropdown-item" (click)="pauseProject(rowData)" *ngIf="(rowData['status'] !='PAUSED') && rowData['status']!='DELETED' &&rowData['status'] !='TERMINATED'" >PAUSE</a>
+                        <a class="dropdown-item" (click)="activateProject(rowData)"   *ngIf="rowData['status']!='ACTIVE'&& rowData['status']!='DELETED' && rowData['status']!='TERMINATED'">ACTIVATE</a>
+                        <a class="dropdown-item" (click)="showTerminateConfirm(rowData)" *ngIf="rowData['status']!='TERMINATED' && rowData['status']!='DELETED'">TERMINATE</a>
+                        <a class="dropdown-item" (click)="updateProject(rowData['id']) " *ngIf="rowData['status']!='DELETED' ">UPDATE</a>
+                        <a class="dropdown-item" (click)="showDeleteConfirm(rowData['id'])" *ngIf="rowData['status']!='DELETED'">DELETE</a>
+                      </div>
+                    </div>
+
+                  </ng-container>
+
+
+                  <ng-container      *ngSwitchDefault>
+                    {{rowData[col.field] }}
+                  </ng-container>
+
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

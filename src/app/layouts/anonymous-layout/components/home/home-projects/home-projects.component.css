@@ -1,0 +1,197 @@
+.new_arrival .single_arrivel_item {
+  margin-bottom: 30px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+@media (max-width: 991px) {
+  /* line 68, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
+  .new_arrival .single_arrivel_item {
+    margin-bottom: 15px;
+  }
+}
+
+/* line 77, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
+.new_arrival .single_arrivel_item:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2f7dfc;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  visibility: hidden;
+}
+
+/* line 89, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
+.new_arrival .single_arrivel_item img {
+  width: 100%;
+  max-height: 550px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+/* line 94, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
+.new_arrival .single_arrivel_item .hover_text {
+  position: absolute;
+  top: 28%;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  color: #fff;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* line 105, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
+.new_arrival .single_arrivel_item .hover_text p {
+  font-size: 16px;
+  color: #fff;
+  letter-spacing: 2;
+}
+
+/* line 110, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
+.new_arrival .single_arrivel_item .hover_text h3 {
+  font-size: 30px;
+  color: #fff;
+  margin: 2px 0 14px;
+}
+
+@media (max-width: 991px) {
+  /* line 110, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
+  .new_arrival .single_arrivel_item .hover_text h3 {
+    font-size: 20px;
+    margin: 2px 0 8px;
+  }
+}
+
+/* line 120, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
+.new_arrival .single_arrivel_item .hover_text .rate_icon i {
+  color: #ffe400 !important;
+}
+
+/* line 125, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
+.new_arrival .single_arrivel_item .hover_text h5 {
+  font-size: 24px;
+  color: #fff;
+  margin: 18px 0 26px;
+}
+
+@media (max-width: 991px) {
+  /* line 125, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
+  .new_arrival .single_arrivel_item .hover_text h5 {
+    font-size: 20px;
+    margin: 2px 0 8px;
+  }
+}
+
+/* line 135, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
+.new_arrival .single_arrivel_item .hover_text .social_icon a {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  color: #000;
+  background-color: #fff;
+  border-radius: 50%;
+  margin: 0 7px;
+}
+
+/* line 144, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
+.new_arrival .single_arrivel_item .hover_text .social_icon a:hover {
+  background-color: #2f7dfc;
+  color: #fff;
+}
+
+/* line 152, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
+.new_arrival .single_arrivel_item:hover:after {
+  opacity: .7;
+  visibility: visible;
+}
+
+/* line 156, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
+.new_arrival .single_arrivel_item:hover .hover_text {
+  top: 31%;
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 991px) {
+  /* line 156, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
+  .new_arrival .single_arrivel_item:hover .hover_text {
+    top: 20%;
+  }
+}
+
+/* line 164, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
+.new_arrival .single_arrivel_item:hover img {
+  transform: scale(1.1);
+}
+
+.new_arrival .new_arrival_iner .weidth_1 {
+  flex: 39% 0 0;
+  max-width: 39%;
+}
+
+@media (max-width: 576px) {
+  /* line 43, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
+  .new_arrival .new_arrival_iner .weidth_1 {
+    flex: 100% 0 0;
+    max-width: 100%;
+  }
+}
+
+
+.feature_part .single_feature_post_text .hover_text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align: center;
+  top: 46%;
+}
+/* line 39, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
+.new_arrival .new_arrival_iner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* line 43, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
+
+
+/* line 51, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
+.new_arrival .new_arrival_iner .weidth_2 {
+  flex: 28% 0 0;
+  max-width: 28%;
+}
+
+@media (max-width: 576px) {
+  /* line 51, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
+  .new_arrival .new_arrival_iner .weidth_2 {
+    flex: 100% 0 0;
+    max-width: 100%;
+  }
+}
+
+/* line 59, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
+.new_arrival .new_arrival_iner .weidth_3 {
+  flex: 29.25% 0 0;
+  max-width: 29.25%;
+}
+
+@media (max-width: 576px) {
+  /* line 59, /Applications/MAMP/htdocs/palash/cl/august 2019/202. Shop/202 shop html/sass/_new_arrival.scss */
+  .new_arrival .new_arrival_iner .weidth_3 {
+    flex: 100% 0 0;
+    max-width: 100%;
+  }
+}

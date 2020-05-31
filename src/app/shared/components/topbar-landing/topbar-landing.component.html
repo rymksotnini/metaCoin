@@ -1,0 +1,115 @@
+<div class="navbar-horizontal">
+  <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top headroom--pinned">
+    <div class="container">
+      <a class="navbar-brand mr-lg-5" [routerLink]="['/']">
+        <img src="./assets/img/brand/clubisti.png">
+      </a>
+      <button class="navbar-toggler" type="button"
+               aria-controls="navbar_global">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse" id="navbar_global" >
+        <div class="navbar-collapse-header">
+          <div class="row">
+            <div class="col-6 collapse-brand">
+              <a [routerLink]="['/home']">
+                <img src="./assets/img/brand/blue.png">
+              </a>
+            </div>
+            <div class="col-6 collapse-close">
+              <button type="button" class="navbar-toggler"  aria-controls="navbar_global">
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link no-caret" data-toggle="dropdown" role="button" [routerLink]="['/']">
+              <i class="ni ni-ui-04 d-lg-none"></i>
+              <span class="nav-link-inner--text"><strong>Introduction</strong></span>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link no-caret" data-toggle="dropdown" role="button" [routerLink]="['/projects']">
+              <i class="ni ni-ui-04 d-lg-none"></i>
+              <span class="nav-link-inner--text"><strong>Projects</strong></span>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link no-caret" data-toggle="dropdown" role="button" [routerLink]="['/history']">
+              <i class="ni ni-collection d-lg-none"></i>
+              <span class="nav-link-inner--text"> <strong>Donations</strong></span>
+            </a>
+          </li>
+        </ul>
+        <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+          <li class="nav-item">
+            <a class="nav-link nav-link-icon" href="#" target="_blank" data-toggle="tooltip" title="Like us on Facebook">
+              <i class="fab fa-facebook-square"></i>
+              <span class="nav-link-inner--text d-lg-none">Facebook</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-icon" href="#" target="_blank" data-toggle="tooltip" title="Follow us on Instagram">
+              <i class="fab fa-instagram"></i>
+              <span class="nav-link-inner--text d-lg-none">Instagram</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-icon" href="#" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
+              <i class="fab fa-twitter"></i>
+              <span class="nav-link-inner--text d-lg-none">Twitter</span>
+            </a>
+          </li>
+
+          <li *ngIf="!connected" class="nav-item d-none d-lg-block ml-lg-4">
+            <a [routerLink]="['/auth/login']" class="btn btn-1 btn-outline-white btn-icon ">
+            <span class="btn-inner--icon">
+              <i class="fa fa-plus-square mr-2"></i>
+            </span>
+              <span class="nav-link-inner--text">Sign-In</span>
+            </a>
+          </li>
+          <li  *ngIf="!connected" class="nav-item d-none d-lg-block ml-lg-4">
+            <a [routerLink]="['/auth/register']" class="btn btn-sample btn-icon" style="background-color: #2A385B">
+            <span class="btn-inner--icon">
+              <i class="fa fa-cloud mr-2"></i>
+            </span>
+              <span class="nav-link-inner--text">Sign-Up</span>
+            </a>
+          </li>
+          <li>
+            <ul class="navbar-nav align-items-center d-none d-md-flex">
+              <li *ngIf="connected" class="nav-item" ngbDropdown placement="bottom-right">
+                <a class="nav-link pr-0" role="button" ngbDropdownToggle>
+                  <div class="media align-items-center">
+            <span class="avatar avatar-sm rounded-circle">
+              <img id="user_image" alt="Image placeholder" [src]=this.image>
+            </span>
+                    <div class="media-body ml-2 d-none d-lg-block">
+                      <span class="mb-0 text-sm  font-weight-bold">{{currentUser.username }}</span>
+                    </div>
+                  </div>
+                </a>
+                <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
+
+                  <a *ngIf="connected" routerLinkActive="active" [routerLink]="['/template/user-profile']" class="dropdown-item">
+                    <i class="ni ni-single-02"></i>
+                    <span>profile</span>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a *ngIf="connected"(click)="logout()" class="dropdown-item">
+                    <i class="ni ni-user-run"></i>
+                    <span>Logout</span>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>

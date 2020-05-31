@@ -1,0 +1,35 @@
+<form id=create-book-form [formGroup]="createCategory" >
+  <div >
+    <div class="form-group">
+      <alert *ngIf="error" class="alert-dismissible">
+        <div role="alert" class="alert alert-danger alert-dismissible">
+          <button aria-label="Close" class="close" type="button">
+            <span aria-hidden="true">×</span>
+            <span class="sr-only">Close</span>
+          </button><span class=" alert-icon">
+                      <i class="fa fa-exclamation-triangle"></i>
+                    </span>
+          <span class=" alert-text">{{msg}}</span>
+        </div>
+      </alert>
+      <label class="form-control-label" for="input-Name">Name</label>
+      <input  formControlName= "name" type="text" id="input-Name" class="form-control form-control-alternative" placeholder="Name" >
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="form-control-label" for="input-type">Categories</label>
+    <!-- Category -->
+    <div class="sidebar-widget">
+      <select formControlName= "type" class="selectpicker default input-type" id="input-type" name="input-type" data-selected-text-format="count" title="All Categories" >
+        <option *ngFor="let item of categories | enumToArray">{{item.name}}</option>
+      </select>
+    </div>
+  </div>
+</form>
+
+<div >
+  <button type="submit" (click)="onSubmit()" class="btn btn-info" form="create-book-form">
+    <i class="icon-feather-plus"></i>add category</button>
+</div>
+
+

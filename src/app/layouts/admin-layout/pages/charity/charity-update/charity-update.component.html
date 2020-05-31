@@ -1,0 +1,200 @@
+
+
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->  <div class="container-fluid d-flex align-items-center">
+      <div class="row">
+
+      </div>
+    </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="container-fluid d-flex align-items-center">
+
+    <div class="col-lg-12 col-lg-12">
+      <div class="col-xl-8 order-xl-1">
+        <div class="card bg-secondary shadow">
+          <div class="card-header bg-white border-0">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <h3 class="mb-0">Charity</h3>
+              </div>
+
+            </div>
+          </div>
+          <div class="card-body">
+            <form id=create-book-form [formGroup]="createCharity">
+              <h6 class="heading-small text-muted mb-4">Information</h6>
+              <div class="pl-lg-4">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-Name">Name</label>
+                      <input  required formControlName= "name" type="text" id="input-Name" class=" form-control form-control-alternative" placeholder="Name" >
+                      <div *ngIf="submitted && f.name.errors" class="invalid-feedback d-block">
+                        field is required
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-genre">Categories</label>
+                      <!-- Category -->
+                      <div class="sidebar-widget">
+                        <select formControlName= "categoriesIds" class="selectpicker default input-genre" id="input-genre" name="input-genre" data-selected-text-format="count" title="All Categories" >
+                          <option *ngFor="let item of categories " [value]="item.id">{{item.name}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-8">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-amount">Amount</label>
+                      <input  formControlName= "amount" type="number" id="input-amount" class="form-control form-control-alternative" placeholder="Amount" >
+                      <div *ngIf="submitted && f.amount.errors" class="text-danger text-xs">
+                        field is required
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+                <div class="row">
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-min">Min donation amount</label>
+                      <input  formControlName= "minDonationAmount" type="text" id="input-min" class="form-control form-control-alternative" placeholder="Amount" >
+                      <div *ngIf="submitted && f.minDonationAmount.errors" class="text-danger text-xs">
+                        field is required
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-max">Max donation amount</label>
+                      <input  formControlName= "maxDonationAmount" type="text" id="input-max" class="form-control form-control-alternative" placeholder="Amount" >
+                      <div *ngIf="submitted && f.maxDonationAmount.errors" class="text-danger text-xs">
+                        field is required
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                </div>
+                <div class="row">
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-start">Start date</label>
+                      <input readonly formControlName= "startDate" type="text" id="input-start" class="form-control form-control-alternative" >
+
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-end">end date</label>
+                      <input readonly formControlName= "endDate" type="text" id="input-end" class="form-control form-control-alternative">
+                    </div>
+                  </div>
+
+
+
+                </div>
+                <div class="row">
+
+                  <nz-range-picker   formControlName= "date" [nzFormat]="dateFormat"></nz-range-picker>
+                </div>
+              </div>
+
+              <hr class="my-4" />
+              <!-- Description -->
+              <h6 class="heading-small text-muted mb-4">Description</h6>
+              <div class="pl-lg-4">
+                <div class="form-group">
+                  <label>Description</label>
+                  <textarea formControlName="shortDescription" rows="4" class="form-control form-control-alternative" placeholder="A few words about your project ..."></textarea>
+                  <div *ngIf="submitted && f.shortDescription.errors" class="text-danger text-xs">
+                    field is required
+                  </div>
+                </div>
+              </div>
+
+              <div class="pl-lg-4">
+                <div class="form-group">
+                  <label>Long Description</label>
+                  <textarea formControlName="longDescription" rows="4" class="form-control form-control-alternative" placeholder="A few words about your project ..."></textarea>
+                  <div *ngIf="submitted && f.longDescription.errors" class="text-danger text-xs">
+                    field is required
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4" />
+              <!-- Description -->
+              <h6 class="heading-small text-muted mb-4">Images</h6>
+
+
+              <div class="row">
+                <div class="col-sm">
+                  <nz-upload
+                    class="avatar-uploader"
+                    nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                    nzName="avatar1"
+                    nzListType="picture-card"
+                    [nzShowUploadList]="false"
+                    [nzBeforeUpload]="beforeUpload"
+                    (nzChange)="handleChange($event)">
+
+
+                    <ng-container *ngIf="!avatarUrl">
+                      <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
+                      <div class="ant-upload-text">Upload small image</div>
+                    </ng-container>
+                    <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
+                  </nz-upload>
+                </div>
+                <div class="col-sm">
+                  <nz-upload
+                    class="avatar-uploader"
+                    nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                    nzName="avatar"
+                    nzListType="picture-card"
+                    [nzShowUploadList]="false"
+                    [nzBeforeUpload]="beforeUpload1"
+                    (nzChange)="handleChange1($event)"
+                  >
+                    <ng-container *ngIf="!avatarUrl1">
+                      <i class="upload-icon" nz-icon [nzType]="loading1 ? 'loading' : 'plus'"></i>
+                      <div class="ant-upload-text">Upload large image</div>
+                    </ng-container>
+                    <img *ngIf="avatarUrl" [src]="avatarUrl1" style="width: 100%" />
+                  </nz-upload>
+                </div>
+
+              </div>
+
+
+
+            </form>
+            <div class="col-xl-12">
+              <button type="submit" (click)="onSubmit()" class="btn btn-info" form="create-book-form">
+                <i class="icon-feather-plus"></i>post project</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<br />
+<br />
+
