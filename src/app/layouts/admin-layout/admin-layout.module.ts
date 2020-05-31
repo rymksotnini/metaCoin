@@ -19,6 +19,10 @@ import {CharitiesListComponent} from './pages/charity/charities-list/charities-l
 import {CharityCreateComponent} from './pages/charity/charity-create/charity-create.component';
 import {CharityUpdateComponent} from './pages/charity/charity-update/charity-update.component';
 import {UsersComponent} from './pages/users/users.component';
+import {SharedModule} from '../../shared/shared.module';
+import {FooterComponent} from '../../shared/components/footer/footer.component';
+import {TopbarLandingComponent} from '../../shared/components/topbar-landing/topbar-landing.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -26,7 +30,13 @@ import {UsersComponent} from './pages/users/users.component';
     RouterModule.forChild(AdminLayoutRoutes),
     NgbDropdownModule,
     MatSnackBarModule,
-    NgZorroAntdModule
+    NgZorroAntdModule,
+    SharedModule,
+    FormsModule
+  ],
+  exports: [
+    AdminSidebarComponent,
+    NavbarComponent
   ],
   declarations: [
     AdminSidebarComponent,
@@ -42,7 +52,8 @@ import {UsersComponent} from './pages/users/users.component';
     CharitiesListComponent,
     CharityCreateComponent,
     CharityUpdateComponent,
-    UsersComponent
+    UsersComponent,
+
   ]
 })
 

@@ -10,9 +10,11 @@ import {TopbarLandingComponent} from './components/topbar-landing/topbar-landing
   declarations: [
     EnumToArrayPipe,
     FooterComponent,
-    TopbarLandingComponent
+
   ],
-  exports: [EnumToArrayPipe],
+  exports: [EnumToArrayPipe,
+    FooterComponent
+  ],
   imports: [
     CommonModule
   ]

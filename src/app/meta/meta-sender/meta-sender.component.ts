@@ -38,8 +38,6 @@ export class MetaSenderComponent implements OnInit {
         this.clubisti.deployed().then(deployed => {
           console.log(deployed);
           deployed.Transfer({}, (err, ev) => {
-            console.log(err);
-            console.log(ev);
             console.log('Transfer event came in transtra');
           });
         });

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
-import {environment} from "../../environments/environment";
+import {environment} from '../../environments/environment';
 const SecureStorage = require('secure-web-storage');
 const SECRET_KEY = environment.secretKey;
 @Injectable({

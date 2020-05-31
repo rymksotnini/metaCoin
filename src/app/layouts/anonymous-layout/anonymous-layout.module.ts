@@ -14,6 +14,7 @@ import {DonationComponent} from "./pages/donation/donation.component";
 import {UpdateProfileComponent} from "./pages/profile/update-profile/update-profile.component";
 import {UserProfileComponent} from "./pages/profile/user-profile/user-profile.component";
 import {TestLandingComponent} from "./pages/test-landing/test-landing.component";
+import {SharedModule} from '../../shared/shared.module';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import {TestLandingComponent} from "./pages/test-landing/test-landing.component"
     TestLandingComponent
   ],
     imports: [
+        SharedModule,
         CommonModule,
         RouterModule.forChild(AnonymousLayoutRoutes),
         NgbProgressbarModule,

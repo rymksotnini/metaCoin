@@ -5,7 +5,6 @@ import {User} from '../../../../_models/user';
 import {ImageService} from '../../../../_services/image.service';
 import {AuthenticationService} from '../../../../_services/authentication.service';
 import {DomSanitizer} from '@angular/platform-browser';
-import {MoneyTransferService} from '../../../../_services/money-transfer.service';
 import {LocalService} from '../../../../_services/local.service';
 import {ROUTES} from '../admin-sidebar/admin-sidebar.component';
 import {IMG_URL} from '../../../../_globals/global-variables';
@@ -30,7 +29,6 @@ export class NavbarComponent implements OnInit, DoCheck {
               private router: Router,
               private  authenticationService: AuthenticationService,
               private sanitizer: DomSanitizer,
-              private moneyTransferService: MoneyTransferService,
               private localService: LocalService) {
     this.location = location;
   }
