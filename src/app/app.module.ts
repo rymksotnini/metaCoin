@@ -16,7 +16,7 @@ import {SharedModule} from './shared/shared.module';
 import {TableModule} from 'primeng/table';
 import {PaginatorModule} from 'primeng/paginator';
 import {MultiSelectModule} from 'primeng/multiselect';
-import {NgZorroAntdModule} from 'ng-zorro-antd';
+import {en_US, NgZorroAntdModule, NZ_I18N} from 'ng-zorro-antd';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RouterModule} from '@angular/router';
 import {AnonymousLayoutModule} from './layouts/anonymous-layout/anonymous-layout.module';
@@ -29,6 +29,7 @@ import {AuthLayoutComponent} from './layouts/auth-layout/auth-layout.component';
 import {AnonymousLayoutComponent} from './layouts/anonymous-layout/anonymous-layout.component';
 import {TemplateLayoutComponent} from './layouts/template-layout/template-layout.component';
 import {TopbarLandingComponent} from './shared/components/topbar-landing/topbar-landing.component';
+import {AuthenticationInterceptorProvider} from './_interceptors/authentication.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +68,8 @@ import {TopbarLandingComponent} from './shared/components/topbar-landing/topbar-
     HttpClientModule,
     MetaModule
   ],
-  providers: [],
+  providers: [AuthenticationInterceptorProvider,
+    {provide: NZ_I18N, useValue: en_US}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

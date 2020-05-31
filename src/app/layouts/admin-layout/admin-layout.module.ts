@@ -22,7 +22,10 @@ import {UsersComponent} from './pages/users/users.component';
 import {SharedModule} from '../../shared/shared.module';
 import {FooterComponent} from '../../shared/components/footer/footer.component';
 import {TopbarLandingComponent} from '../../shared/components/topbar-landing/topbar-landing.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TableModule} from 'primeng/table';
+import {PaginatorModule} from 'primeng/paginator';
+import {MultiSelectModule} from 'primeng/multiselect';
 
 @NgModule({
   imports: [
@@ -32,7 +35,11 @@ import {FormsModule} from '@angular/forms';
     MatSnackBarModule,
     NgZorroAntdModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    TableModule,
+    PaginatorModule,
+    MultiSelectModule,
+    ReactiveFormsModule
   ],
   exports: [
     AdminSidebarComponent,

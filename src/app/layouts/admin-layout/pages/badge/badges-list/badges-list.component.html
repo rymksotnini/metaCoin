@@ -37,7 +37,7 @@
 
 
 
-          <p-table #tt   [autoLayout]="true" class="table align-items-center table-flush"    [rowHover]="true" [columns]="cols" [value]="badges" [paginator]="true" [rows]="10"   [rowsPerPageOptions]="[1,5,10]">
+          <p-table #tt   [autoLayout]="true" class="table align-items-center table-flush"  [rowHover]="true" [columns]="cols" [value]="badges" [paginator]="true" [rows]="10"   [rowsPerPageOptions]="[1,5,10]">
             <ng-template pTemplate="caption">
 
               <input type="text" pInputText size="50" placeholder="Search" (input)="tt.filterGlobal($event.target.value, 'contains')" style="width:auto">
@@ -48,7 +48,7 @@
               <tr>
                 <th *ngFor="let col of columns" [pSortableColumn]="col.field" [pSortableColumnDisabled]="col.field === 'action'"  >
                   {{col.header}}
-                  <p-sortIcon  *ngIf="col.field !== 'action'"[field]="col.field"></p-sortIcon>
+                  <p-sortIcon  *ngIf="col.field !== 'action'" [field]="col.field"></p-sortIcon>
                 </th>
               </tr>
             </ng-template>

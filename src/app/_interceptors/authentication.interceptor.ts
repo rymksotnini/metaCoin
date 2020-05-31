@@ -7,7 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {AuthenticationService} from '../_services/authentication.service';
-import {LocalService} from "../_services/local.service";
+import {LocalService} from '../_services/local.service';
 
 @Injectable()
 export class AuthenticationInterceptor implements HttpInterceptor {
@@ -22,7 +22,7 @@ export class AuthenticationInterceptor implements HttpInterceptor {
       const newRequest = request.clone(
         {
           headers: request.headers.append(
-            'Authorization', 'Bearer '+this.localService.getJsonValue('token'))
+            'Authorization', 'Bearer '+ this.localService.getJsonValue('token'))
         }
       );
       // console.log('request',newRequest);
@@ -34,7 +34,7 @@ export class AuthenticationInterceptor implements HttpInterceptor {
   }
 }
 export const AuthenticationInterceptorProvider = {
-  provide:HTTP_INTERCEPTORS,
-  useClass  :AuthenticationInterceptor,
+  provide: HTTP_INTERCEPTORS,
+  useClass: AuthenticationInterceptor,
   multi: true
 };

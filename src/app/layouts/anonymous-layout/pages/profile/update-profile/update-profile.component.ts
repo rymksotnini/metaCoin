@@ -22,8 +22,8 @@ export class UpdateProfileComponent implements OnInit {
   dateFormat = 'yyyy/MM/dd';
   profileToCreate: FormGroup;
   gender = Gender;
-  fileData:any;
-  imageEditClicked=false;
+  fileData: any;
+  imageEditClicked = false;
   currentUser: User = new User();
   currentProfile: Profile = new Profile();
   currentAddress: Address = new Address();
@@ -31,14 +31,14 @@ export class UpdateProfileComponent implements OnInit {
   public image = null;
   pipe = new DatePipe('en-US');
   constructor(private formBuilder: FormBuilder,
-              private imageService:ImageService,
-              private authenticationService:AuthenticationService,
-              private crudService:CrudService,
-              private router:Router) { }
+              private imageService: ImageService,
+              private authenticationService: AuthenticationService,
+              private crudService: CrudService,
+              private router: Router) { }
 
   ngOnInit(): void {
     // fetch profile from back
-    this.crudService.getOne(API_URL+USERS_PROFILE,this.authenticationService.getCurrentUser().id).subscribe(
+    this.crudService.getOne(API_URL+ USERS_PROFILE, this.authenticationService.getCurrentUser().id).subscribe(
       (res) =>{
         this.currentUser = JSON.parse(res.user);
         this.currentProfile = this.currentUser.profile;
@@ -101,7 +101,7 @@ export class UpdateProfileComponent implements OnInit {
     this.imageEditClicked = true;
   }
 
-  fileEvent(e){
+  fileEvent(e) {
     this.fileData = e.target.files[0];
     console.log(this.fileData);
   }
@@ -147,7 +147,7 @@ export class UpdateProfileComponent implements OnInit {
         console.log(data);
       });
     }
-    this.router.navigate(['/template/user-profile']);
+    this.router.navigate(['/user-profile']);
   }
 
 }

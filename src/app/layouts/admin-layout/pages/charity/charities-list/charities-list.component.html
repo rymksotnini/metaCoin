@@ -114,7 +114,7 @@
               <tr>
                 <th *ngFor="let col of columns" [pSortableColumn]="col.field" [pSortableColumnDisabled]="col.field === 'action'"  >
                   {{col.header}}
-                  <p-sortIcon  *ngIf="col.field !== 'action'"[field]="col.field"></p-sortIcon>
+                  <p-sortIcon  *ngIf="col.field !== 'action'" [field]="col.field"></p-sortIcon>
                 </th>
               </tr>
             </ng-template>

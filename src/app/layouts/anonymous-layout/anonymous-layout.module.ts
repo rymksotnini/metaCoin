@@ -15,6 +15,9 @@ import {UpdateProfileComponent} from "./pages/profile/update-profile/update-prof
 import {UserProfileComponent} from "./pages/profile/user-profile/user-profile.component";
 import {TestLandingComponent} from "./pages/test-landing/test-landing.component";
 import {SharedModule} from '../../shared/shared.module';
+import {ReactiveFormsModule} from '@angular/forms';
+import {NgZorroAntdModule} from 'ng-zorro-antd';
+import {MatSelectCountryModule} from '@angular-material-extensions/select-country';
 
 
 @NgModule({
@@ -31,11 +34,14 @@ import {SharedModule} from '../../shared/shared.module';
     UserProfileComponent,
     TestLandingComponent
   ],
-    imports: [
-        SharedModule,
-        CommonModule,
-        RouterModule.forChild(AnonymousLayoutRoutes),
-        NgbProgressbarModule,
-    ]
+  imports: [
+    SharedModule,
+    CommonModule,
+    RouterModule.forChild(AnonymousLayoutRoutes),
+    NgbProgressbarModule,
+    ReactiveFormsModule,
+    NgZorroAntdModule,
+    MatSelectCountryModule,
+  ]
 })
 export class AnonymousLayoutModule { }

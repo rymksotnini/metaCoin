@@ -32,7 +32,6 @@ export class TopbarLandingComponent implements OnInit, DoCheck {
     this.location = location;
   }
 
-
   ngOnInit() {
     this.listTitles = ROUTES.filter(listTitle => listTitle);
     console.log(this.authenticationService.isLogged());

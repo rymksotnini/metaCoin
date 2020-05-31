@@ -95,12 +95,12 @@
                 </a>
                 <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
 
-                  <a *ngIf="connected" routerLinkActive="active" [routerLink]="['/template/user-profile']" class="dropdown-item">
+                  <a *ngIf="connected" routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
                     <i class="ni ni-single-02"></i>
                     <span>profile</span>
                   </a>
                   <div class="dropdown-divider"></div>
-                  <a *ngIf="connected"(click)="logout()" class="dropdown-item">
+                  <a *ngIf="connected" (click)="logout()" class="dropdown-item">
                     <i class="ni ni-user-run"></i>
                     <span>Logout</span>
                   </a>

@@ -7,10 +7,12 @@ import {CharityUpdateComponent} from './pages/charity/charity-update/charity-upd
 import {CharityCreateComponent} from './pages/charity/charity-create/charity-create.component';
 import {AccountsListComponent} from './pages/account/accounts-list/accounts-list.component';
 import {AccountsCreateComponent} from './pages/account/accounts-create/accounts-create.component';
+import {DashboardComponent} from '../anonymous-layout/pages/dashboard/dashboard.component';
 
 
 
 export const AdminLayoutRoutes: Routes = [
+  { path: 'landing',          component: DashboardComponent },
   {
     path: 'users',
     component: UsersComponent,

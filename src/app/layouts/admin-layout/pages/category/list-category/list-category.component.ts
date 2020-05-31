@@ -51,7 +51,7 @@ export class ListCategoryComponent implements OnInit {
     this.crudService.delete(API_URL + CATEGORY, category.id).subscribe(res => {
       category.deleted = 1;
     }, error => {
-      console.log(error)
+      console.log(error);
     });
   }
 
@@ -59,7 +59,7 @@ export class ListCategoryComponent implements OnInit {
     this.crudService.getAll(API_URL + CATEGORY)
       .toPromise()
       .then(res => res.data as Category[])
-      .then(data => { return data; })
+      .then(data => data)
       .then(cars => this.categories = cars);
 
     console.log(this.categories);
@@ -97,7 +97,7 @@ export class ListCategoryComponent implements OnInit {
 
 
   onAdd($event: any) {
-    console.log("event ", $event)
+    console.log('event ', $event)
     this.categories.push($event.data);
   }
 
