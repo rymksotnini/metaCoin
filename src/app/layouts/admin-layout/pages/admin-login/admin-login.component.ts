@@ -5,7 +5,6 @@ import {User} from '../../../../_models/user';
 import {AuthenticationService} from '../../../../_services/authentication.service';
 import {Role} from '../../../../_models/enum/Role';
 
-
 @Component({
   selector: 'app-admin-login',
   templateUrl: './admin-login.component.html',
@@ -55,6 +54,5 @@ export class AdminLoginComponent implements OnInit, OnDestroy {
         }
       }
     );
-
   }
 }

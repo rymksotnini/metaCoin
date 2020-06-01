@@ -5,6 +5,7 @@ import {DashboardComponent} from './pages/dashboard/dashboard.component';
 import {CharityProjectsComponent} from './pages/charity/charity-projects/charity-projects.component';
 import {UserProfileComponent} from './pages/profile/user-profile/user-profile.component';
 import {UpdateProfileComponent} from './pages/profile/update-profile/update-profile.component';
+import {BuyCoinsComponent} from './pages/buy-coins/buy-coins.component';
 
 
 export const AnonymousLayoutRoutes: Routes = [
@@ -14,4 +15,5 @@ export const AnonymousLayoutRoutes: Routes = [
   { path: 'history/project/:id',            component: DonationComponent },
   { path: 'dashboard',          component: DashboardComponent },
   { path: 'projects',           component: CharityProjectsComponent },
+  { path: 'buy-coins',           component: BuyCoinsComponent }
 ];

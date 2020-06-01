@@ -5,7 +5,7 @@
         <img src="./assets/img/brand/clubisti.png">
       </a>
       <button class="navbar-toggler" type="button"
-               aria-controls="navbar_global">
+              aria-controls="navbar_global">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="navbar-collapse collapse" id="navbar_global" >
@@ -85,9 +85,9 @@
               <li *ngIf="connected" class="nav-item" ngbDropdown placement="bottom-right">
                 <a class="nav-link pr-0" role="button" ngbDropdownToggle>
                   <div class="media align-items-center">
-            <span class="avatar avatar-sm rounded-circle">
-              <img id="user_image" alt="Image placeholder" [src]=this.image>
-            </span>
+                    <span class="avatar avatar-sm rounded-circle">
+                      <img id="user_image" alt="Image placeholder" [src]=this.image>
+                    </span>
                     <div class="media-body ml-2 d-none d-lg-block">
                       <span class="mb-0 text-sm  font-weight-bold">{{currentUser.username }}</span>
                     </div>
@@ -95,7 +95,7 @@
                 </a>
                 <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
 
-                  <a *ngIf="connected" routerLinkActive="active" [routerLink]="['/user-profile']" class="dropdown-item">
+                  <a *ngIf="connected" routerLinkActive="active" [routerLink]="['/template/user-profile']" class="dropdown-item">
                     <i class="ni ni-single-02"></i>
                     <span>profile</span>
                   </a>
@@ -104,6 +104,16 @@
                     <i class="ni ni-user-run"></i>
                     <span>Logout</span>
                   </a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <div class="media align-items-center">
+                  <span class="avatar avatar-sm">
+                    <img alt="Image placeholder" class="" src="assets/img/clubisitiCoin.png">
+                  </span>
+                  <div class="media-body ml-2 d-none d-lg-block">
+                    <span class="mb-0 text-sm font-weight-bold text-white">{{balance}}</span>
+                  </div>
                 </div>
               </li>
             </ul>

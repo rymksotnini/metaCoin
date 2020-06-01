@@ -4,11 +4,16 @@
   </span>
   <span class=" alert-text">{{this.textSuccess}}</span>
 </div>
-<div *ngIf="error" role="alert" class="alert alert-danger alert-dismissible">
-  <span class=" alert-icon">
-    <i class="fa fa-exclamation-triangle"></i>
-  </span>
-  <span class=" alert-text">{{this.textError}}</span>
+<div *ngIf="error" role="alert" class="alert alert-danger alert-dismissible row">
+  <div class="col-8">
+    <span class=" alert-icon">
+      <i class="fa fa-exclamation-triangle"></i>
+    </span>
+    <span class=" alert-text">{{this.textError}}</span>
+  </div>
+  <a *ngIf="showBuy" class="col-4 text-underline" style="padding-top: 5px" [routerLink]="['/buy-coins']">
+    Buy now
+  </a>
 </div>
 <form id=create-book-form [formGroup]="donation" >
   <div >
@@ -24,6 +29,3 @@
     <i class="fas fa-coins"></i>
   </button>
 </div>
-
-
-

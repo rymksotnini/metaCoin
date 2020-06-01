@@ -25,17 +25,12 @@
           </div>
           <form role="form" (ngSubmit)="login(formLogin)"  #formLogin="ngForm">
             <div class="form-group mb-3">
-              <alert *ngIf="error" class="alert-dismissible">
-                <div role="alert" class="alert alert-danger alert-dismissible">
-                  <button aria-label="Close" class="close" type="button">
-                    <span aria-hidden="true">×</span>
-                    <span class="sr-only">Close</span>
-                  </button><span class=" alert-icon">
+              <div *ngIf="error" role="alert" class="alert alert-danger alert-dismissible">
+                  <span class=" alert-icon">
                       <i class="fa fa-exclamation-triangle"></i>
                     </span>
-                  <span class=" alert-text">{{this.textError}}</span>
-                </div>
-              </alert>
+                <span class=" alert-text">{{this.textError}}</span>
+              </div>
 
               <div class="input-group input-group-alternative">
                 <div class="input-group-prepend">
@@ -59,7 +54,7 @@
               </label>
             </div>
             <div class="text-center">
-              <button type="submit" [disabled]="!formLogin.form.valid" value="login"class="btn btn-primary my-4">Sign in</button>
+              <button type="submit" [disabled]="!formLogin.form.valid" value="login" class="btn btn-primary my-4">Sign in</button>
             </div>
           </form>
         </div>

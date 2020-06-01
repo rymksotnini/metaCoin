@@ -41,17 +41,12 @@
           </div>
           <form role="form" (ngSubmit)="register(formLogin)"  #formLogin="ngForm">
             <div class="form-group">
-              <alert *ngIf="error" class="alert-dismissible">
-                <div role="alert" class="alert alert-danger alert-dismissible">
-                  <button aria-label="Close" class="close" type="button">
-                    <span aria-hidden="true">×</span>
-                    <span class="sr-only">Close</span>
-                  </button><span class=" alert-icon">
+              <div *ngIf="error" role="alert" class="alert alert-danger alert-dismissible">
+                  <span class=" alert-icon">
                       <i class="fa fa-exclamation-triangle"></i>
                     </span>
-                  <span class=" alert-text">Existent email or invalid password</span>
-                </div>
-              </alert>
+                <span class=" alert-text">{{this.errorText}}</span>
+              </div>
               <div class="input-group input-group-alternative mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-single-02"></i></span>

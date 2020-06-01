@@ -1,11 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {NgForm} from '@angular/forms';
-import {Router} from '@angular/router';
 import {User} from '../../../../_models/user';
 import {environment} from '../../../../../environments/environment';
 import {REDIRECT} from '../../../../_globals/global-variables';
 import {AuthenticationService} from '../../../../_services/authentication.service';
-
+import {Router} from '@angular/router';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -36,21 +35,22 @@ export class LoginComponent implements OnInit, OnDestroy {
       console.log(this.user);
       this.authenticationService.login(this.user).subscribe(
         (result) => {
+          this.error = false;
           this.authenticationService.savingToken(result);
           this.authenticationService.savingUser(result);
           this.router.navigate(['/dashboard']);
         },
-        (error)=> {
+        (error) => {
           this.error = true;
           if (error.status === 406) {
             this.textError = 'Invalid email or password';
           } else if (error.status === 401) {
             this.textError = 'Incorrect password or email';
           } else {
-            this.textError ='Error';
+            this.textError = 'Error';
           }
         }
-      )
+      );
     }
   }
 }

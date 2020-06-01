@@ -18,6 +18,7 @@ import {SharedModule} from '../../shared/shared.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NgZorroAntdModule} from 'ng-zorro-antd';
 import {MatSelectCountryModule} from '@angular-material-extensions/select-country';
+import {BuyCoinsComponent} from './pages/buy-coins/buy-coins.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {MatSelectCountryModule} from '@angular-material-extensions/select-countr
     DonationComponent,
     UpdateProfileComponent,
     UserProfileComponent,
-    TestLandingComponent
+    TestLandingComponent,
+    BuyCoinsComponent
   ],
   imports: [
     SharedModule,

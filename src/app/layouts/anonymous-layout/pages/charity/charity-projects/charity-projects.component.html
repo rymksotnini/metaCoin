@@ -129,12 +129,12 @@
                           <span>{{(project?.offer?.amount && project?.offer?.amount !==0)?(project?.lastUpdatedSum)*100/(project?.offer?.amount):0}}%</span>
                         </div>
                       </div>
-                      <ngb-progressbar (click)="details(project?.offer?.id)" type="primary" [value]="(project?.offer?.amount && project?.offer?.amount !==0)?(project?.lastUpdatedSum)*100/(project?.offer?.amount):0"></ngb-progressbar>
+                      <ngb-progressbar type="primary" [value]="(project?.offer?.amount && project?.offer?.amount !==0)?(project?.lastUpdatedSum)*100/(project?.offer?.amount):0"></ngb-progressbar>
                     </div>
                   </div>
                   <div class="row" style="width: 100%">
-                    <div class="col-lg-6">
-                      <a class="btn btn-danger mt-4" (click)="donate(project)">Donate</a>
+                    <div  class="col-lg-6">
+                      <a *ngIf="project.status!='TERMINATED'" class="btn btn-danger mt-4" (click)="donate(project)">Donate</a>
                     </div>
                     <div class="col-lg-6">
                       <a href="javascript:void(0)" class="btn btn-neutral mt-4">See Details</a>

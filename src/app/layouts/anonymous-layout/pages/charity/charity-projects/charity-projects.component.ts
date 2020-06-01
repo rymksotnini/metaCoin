@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Project} from "../../../../../_models/Project";
-import {Profile} from "../../../../../_models/profile";
-import {CrudService} from "../../../../../_services/crud.service";
-import {NzModalRef, NzModalService} from "ng-zorro-antd";
-import {AuthenticationService} from "../../../../../_services/authentication.service";
-import {Router} from "@angular/router";
-import {API_URL, CHARITY, USERS_PROFILE2, IMG_URL} from "../../../../../_globals/global-variables";
-import {CharityAmountComponent} from "../charity-amount/charity-amount.component";
+import {Project} from '../../../../../_models/Project';
+import {Profile} from '../../../../../_models/profile';
+import {CrudService} from '../../../../../_services/crud.service';
+import {NzModalRef, NzModalService} from 'ng-zorro-antd';
+import {AuthenticationService} from '../../../../../_services/authentication.service';
+import {API_URL, CHARITY, IMG_URL, USERS_PROFILE2} from '../../../../../_globals/global-variables';
+import {CharityAmountComponent} from '../charity-amount/charity-amount.component';
 
 @Component({
   selector: 'app-charity-projects',
@@ -15,13 +14,12 @@ import {CharityAmountComponent} from "../charity-amount/charity-amount.component
 })
 export class CharityProjectsComponent implements OnInit {
 
-  public projects: Array<Project>=[];
+  public projects: Array<Project> = [];
   profile: Profile;
   constructor(
     private crudService: CrudService,
     private modal: NzModalService,
-    private authenticationService: AuthenticationService,
-    private router: Router
+    private authenticationService: AuthenticationService
   ) { }
 
   IMG_URL = IMG_URL;
@@ -31,7 +29,7 @@ export class CharityProjectsComponent implements OnInit {
   }
 
   getProjects() {
-    this.crudService.getAll(API_URL+ CHARITY).subscribe(
+    this.crudService.getAll(API_URL + CHARITY).subscribe(
       (response) => {
         this.projects = response.data;
         console.log(this.projects);
@@ -43,10 +41,10 @@ export class CharityProjectsComponent implements OnInit {
   }
 
   getUserProfile() {
-    if(this.authenticationService.getCurrentUser()) {
+    if (this.authenticationService.getCurrentUser()) {
       this.crudService.getOne(API_URL + USERS_PROFILE2, this.authenticationService.getCurrentUser().id).subscribe((resp) => {
         this.profile = resp?.data;
-      })
+      });
     }
   }
 
@@ -54,8 +52,8 @@ export class CharityProjectsComponent implements OnInit {
     const modal: NzModalRef = this.modal.create({
       nzTitle: 'Insert your amount',
       nzContent: CharityAmountComponent,
-      nzComponentParams:{
-        id: project?.offer?.id
+      nzComponentParams: {
+        project
       },
       nzFooter: null
     });
@@ -63,10 +61,5 @@ export class CharityProjectsComponent implements OnInit {
       this.getProjects();
       this.getUserProfile();
     });
-  }
-
-  details(id: number) {
-    console.log(id)
-    this.router.navigate(['/history/project/'+ id]);
   }
 }
