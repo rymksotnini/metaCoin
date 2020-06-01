@@ -5,6 +5,11 @@
   "projects": {
     "clubisti": {
       "root": "",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "sourceRoot": "src",
       "projectType": "application",
       "targets": {
