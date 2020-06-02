@@ -43,7 +43,7 @@ export class AuthenticationService {
     this.currentUser = new User();
     return this.http.post<any>(API_URL+'/logout', {observe: 'response' });
   }
-  public isLogged(): boolean{
+  public isLogged(): boolean {
     return this.localService.getJsonValue('token')!=null;
   }
 

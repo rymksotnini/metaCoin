@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
 
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {NzModalRef, NzModalService} from 'ng-zorro-antd';
 import {CrudService} from '../../../../_services/crud.service';
 import {API_URL, CHARITY, PROJECT, TRANSACTIONS} from '../../../../_globals/global-variables';
 import {CreateComplainComponent} from '../complain/create-complain/create-complain.component';
 import {Project} from '../../../../_models/Project';
 import {Transaction} from '../../../../_models/Transaction';
+import {AuthenticationService} from '../../../../_services/authentication.service';
 
 
 
@@ -31,7 +32,9 @@ export class DonationComponent implements OnInit {
   constructor(
     private modal: NzModalService,
     private route: ActivatedRoute,
-    private crudService: CrudService) {
+    private router: Router,
+    private crudService: CrudService,
+    private authService: AuthenticationService) {
 
   }
 
@@ -96,6 +99,10 @@ export class DonationComponent implements OnInit {
   }
 
   open(id: number) {
+    if (!this.authService.isLogged()) {
+      this.router.navigate(['/auth/login']);
+      return;
+    }
     const modal: NzModalRef = this.modal.create({
       nzTitle: null,
       nzContent: CreateComplainComponent,
