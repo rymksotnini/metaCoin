@@ -6,9 +6,9 @@
       </div>
       <div class="container py-lg-md d-flex">
 
-        <div class="col px-0">
+        <div *ngIf="loggedIn" class="col px-0">
           <div class="row row-grid justify-content-between">
-            <div class="col-md-5 mt-lg-5">
+            <div  class="col-md-5 mt-lg-5">
               <div class="row">
                 <div class="col-lg-6 col-sm-12 px-2 py-2">
                   <div class="card card1 card-stats">
@@ -49,7 +49,7 @@
                   </div>
                 </div>
               </div>
-              <div class="row">
+              <div  class="row">
                 <div class="col-lg-6 col-sm-12 px-2 py-2">
                   <div class="card card1 card-stats">
                     <div class="card-body">

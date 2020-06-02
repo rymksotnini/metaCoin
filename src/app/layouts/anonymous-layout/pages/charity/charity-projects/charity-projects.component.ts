@@ -16,6 +16,7 @@ export class CharityProjectsComponent implements OnInit {
 
   public projects: Array<Project> = [];
   profile: Profile;
+  loggedIn: any;
   constructor(
     private crudService: CrudService,
     private modal: NzModalService,
@@ -24,6 +25,7 @@ export class CharityProjectsComponent implements OnInit {
 
   IMG_URL = IMG_URL;
   ngOnInit(): void {
+    this.loggedIn = this.authenticationService.isLogged();
     this.getProjects();
     this.getUserProfile();
   }

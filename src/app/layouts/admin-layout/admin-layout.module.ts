@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AdminLayoutRoutes } from './admin-layout.routing';
-import {NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbCollapseModule, NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgZorroAntdModule} from 'ng-zorro-antd';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {AdminSidebarComponent} from './components/admin-sidebar/admin-sidebar.component';
@@ -39,7 +39,8 @@ import {ListComplainComponent} from './pages/complain/list-complain/list-complai
     TableModule,
     PaginatorModule,
     MultiSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbCollapseModule
   ],
   exports: [
     AdminSidebarComponent,
