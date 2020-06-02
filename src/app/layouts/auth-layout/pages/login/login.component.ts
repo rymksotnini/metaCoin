@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
   }
   ngOnDestroy() {
   }
