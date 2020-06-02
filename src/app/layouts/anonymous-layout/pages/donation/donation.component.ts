@@ -9,6 +9,7 @@ import {CreateComplainComponent} from '../complain/create-complain/create-compla
 import {Project} from '../../../../_models/Project';
 import {Transaction} from '../../../../_models/Transaction';
 import {AuthenticationService} from '../../../../_services/authentication.service';
+import {state} from '@angular/animations';
 
 
 
@@ -100,7 +101,7 @@ export class DonationComponent implements OnInit {
 
   open(id: number) {
     if (!this.authService.isLogged()) {
-      this.router.navigate(['/auth/login']);
+      this.router.navigate(['/auth/login'], { queryParams: { returnUrl: this.router.url }});
       return;
     }
     const modal: NzModalRef = this.modal.create({
