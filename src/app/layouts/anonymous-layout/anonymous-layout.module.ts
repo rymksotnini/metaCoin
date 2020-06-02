@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {AnonymousLayoutRoutes} from './anonymous-layout.routing';
-import {NgbProgressbarModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDropdownModule, NgbProgressbarModule} from '@ng-bootstrap/ng-bootstrap';
 import {HomeDescriptionComponent} from "./components/home/home-description/home-description.component";
 import {HomeDonationsComponent} from "./components/home/home-donations/home-donations.component";
 import {HomeProjectsComponent} from "./components/home/home-projects/home-projects.component";
@@ -15,10 +15,12 @@ import {UpdateProfileComponent} from "./pages/profile/update-profile/update-prof
 import {UserProfileComponent} from "./pages/profile/user-profile/user-profile.component";
 import {TestLandingComponent} from "./pages/test-landing/test-landing.component";
 import {SharedModule} from '../../shared/shared.module';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgZorroAntdModule} from 'ng-zorro-antd';
 import {MatSelectCountryModule} from '@angular-material-extensions/select-country';
 import {BuyCoinsComponent} from './pages/buy-coins/buy-coins.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 
 @NgModule({
@@ -44,6 +46,9 @@ import {BuyCoinsComponent} from './pages/buy-coins/buy-coins.component';
     ReactiveFormsModule,
     NgZorroAntdModule,
     MatSelectCountryModule,
+    NgbDropdownModule,
+    MatSnackBarModule,
+    FormsModule
   ]
 })
 export class AnonymousLayoutModule { }
