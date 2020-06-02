@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import {NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
-import {NgZorroAntdModule} from 'ng-zorro-antd';
+import {NgZorroAntdModule, NZ_ICONS, NzIconModule} from 'ng-zorro-antd';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {AdminSidebarComponent} from './components/admin-sidebar/admin-sidebar.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
@@ -20,12 +20,18 @@ import {CharityCreateComponent} from './pages/charity/charity-create/charity-cre
 import {CharityUpdateComponent} from './pages/charity/charity-update/charity-update.component';
 import {UsersComponent} from './pages/users/users.component';
 import {SharedModule} from '../../shared/shared.module';
-import {FooterComponent} from '../../shared/components/footer/footer.component';
-import {TopbarLandingComponent} from '../../shared/components/topbar-landing/topbar-landing.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TableModule} from 'primeng/table';
 import {PaginatorModule} from 'primeng/paginator';
 import {MultiSelectModule} from 'primeng/multiselect';
+import { IconDefinition } from '@ant-design/icons-angular';
+import * as AllIcons from '@ant-design/icons-angular/icons';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+const antDesignIcons = AllIcons as {
+  [key: string]: IconDefinition;
+};
+const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key])
+
 
 @NgModule({
   imports: [
@@ -39,7 +45,9 @@ import {MultiSelectModule} from 'primeng/multiselect';
     TableModule,
     PaginatorModule,
     MultiSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NzIconModule,
+    DragDropModule,
   ],
   exports: [
     AdminSidebarComponent,
@@ -61,7 +69,10 @@ import {MultiSelectModule} from 'primeng/multiselect';
     CharityUpdateComponent,
     UsersComponent,
 
-  ]
+  ],
+  providers: [
+    { provide: NZ_ICONS, useValue: icons }
+  ],
 })
 
 export class AdminLayoutModule {}
