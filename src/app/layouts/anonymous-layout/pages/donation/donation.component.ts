@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {NzModalRef, NzModalService} from "ng-zorro-antd";
-import {Project} from "../../../../_models/Project";
-import {Transaction} from "../../../../_models/Transaction";
-import {ActivatedRoute} from "@angular/router";
-import {CrudService} from "../../../../_services/crud.service";
-import {API_URL, CHARITY, PROJECT, TRANSACTIONS} from "../../../../_globals/global-variables";
-import {CreateComplainComponent} from "../complain/create-complain/create-complain.component";
+
+
+import {ActivatedRoute} from '@angular/router';
+import {NzModalRef, NzModalService} from 'ng-zorro-antd';
+import {CrudService} from '../../../../_services/crud.service';
+import {API_URL, CHARITY, PROJECT, TRANSACTIONS} from '../../../../_globals/global-variables';
+import {CreateComplainComponent} from '../complain/create-complain/create-complain.component';
+import {Project} from '../../../../_models/Project';
+import {Transaction} from '../../../../_models/Transaction';
 
 
 
@@ -27,9 +29,9 @@ export class DonationComponent implements OnInit {
   transactions: Transaction[];
 
   constructor(
-              private modal: NzModalService,
-              private route: ActivatedRoute,
-              private crudService: CrudService) {
+    private modal: NzModalService,
+    private route: ActivatedRoute,
+    private crudService: CrudService) {
 
   }
 
@@ -79,7 +81,7 @@ export class DonationComponent implements OnInit {
     this.crudService.getAll(API_URL + TRANSACTIONS + PROJECT + '/' + this.projectId).subscribe(
       (response) => {
         this.transactions = response.data;
-        console.log(this.transactions)
+        console.log(this.transactions);
       },
       (error =>  {
         console.log(error);
@@ -97,19 +99,19 @@ export class DonationComponent implements OnInit {
     const modal: NzModalRef = this.modal.create({
       nzTitle: null,
       nzContent: CreateComplainComponent,
-      nzComponentParams:{
+      nzComponentParams: {
         transactionId: id
       },
       nzFooter: null
     });
   }
 
-  calculateSum(index: number){
+  calculateSum(index: number) {
     let sum = 0;
-    for(let i=0; i<=index; i++){
+    for (let i = 0; i <= index; i++) {
       sum += this.transactions[i].amount;
     }
-    return sum
+    return sum;
   }
 
 

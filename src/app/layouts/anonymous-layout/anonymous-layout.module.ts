@@ -34,7 +34,7 @@ import {BuyCoinsComponent} from './pages/buy-coins/buy-coins.component';
     UpdateProfileComponent,
     UserProfileComponent,
     TestLandingComponent,
-    BuyCoinsComponent
+    BuyCoinsComponent,
   ],
   imports: [
     SharedModule,

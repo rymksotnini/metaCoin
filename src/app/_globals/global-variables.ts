@@ -26,3 +26,5 @@ export const DEFAULT_ACCOUNT = '/default';
 export const TRANSACTIONS = '/transactions';
 export const PROJECT = '/project';
 export const PROFILE_BALANCE = '/profiles/balance';
+export const REFUSE = '/refuse';
+export const PROCESS = '/process';
