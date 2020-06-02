@@ -88,6 +88,7 @@
         </div>
       </form>
       <!-- Navigation -->
+
       <ul class="navbar-nav" >
         <li  class=" nav-item">
           <a   routerLinkActive="active" [routerLink]="['/admin/landing']" class="nav-link">
@@ -97,7 +98,7 @@
         </li>
         <li class="nav-item">
           <a  class="nav-link" data-toggle="collapse" (click)="collapse('sub1')" aria-expanded="false">
-            <i class="ni ni-settings text-pink">
+            <i class="ni ni-settings text-red">
 
             </i><span class="nav-link-text">Setting</span></a>
           <div  id="1" [ngClass]="{'collapse': openMap['sub1']}" aria-expanded="false" aria-hidden="true" >
@@ -122,7 +123,7 @@
         </li>
         <li class="nav-item">
           <a  class="nav-link" data-toggle="collapse" (click)="collapse('sub2')" aria-expanded="false">
-            <i class=" ni ni-money-coins text-primary">
+            <i class=" ni ni-money-coins text-yellow">
 
             </i><span class="nav-link-text">Charity</span></a>
           <div  id="2" [ngClass]="{'collapse': openMap['sub2']}" aria-expanded="false" aria-hidden="true" >
@@ -135,7 +136,7 @@
               <li class="nav-item">
                 <a class="nav-link"  href="#/admin/add-charity">
                   <i class="ni ni-fat-add text-blue"></i>
-                 add project </a>
+                  add project </a>
               </li>
 
 
@@ -157,6 +158,12 @@
               </li>
             </ul>
           </div>
+        </li>
+        <li  class=" nav-item">
+          <a   routerLinkActive="active" [routerLink]="['/admin/complains']" class="nav-link">
+            <i class="ni ni-satisfied text-indigo"></i>
+            Complains
+          </a>
         </li>
       </ul>
 

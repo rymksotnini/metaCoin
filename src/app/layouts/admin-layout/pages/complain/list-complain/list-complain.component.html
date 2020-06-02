@@ -1,0 +1,94 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->  <div class="container-fluid d-flex align-items-center">
+      <div class="row">
+        <div class="col-lg-7 col-md-10">
+          <a [routerLink]="['/admin/add-charity']" class="btn btn-info">Add new project</a>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h3 class="mb-0">Complains</h3>
+        </div>
+        <div class="table-responsive">
+
+          <p-table #tt class="table align-items-center table-flush"  [autoLayout]="true"  [rowHover]="true" [columns]="cols" [value]="complains" [paginator]="true" [rows]="10"   [rowsPerPageOptions]="[1,5,10]">
+            <ng-template pTemplate="caption">
+
+              <input type="text" pInputText size="50" placeholder="Search" (input)="tt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+            </ng-template>
+
+            <ng-template class="thead-light" pTemplate="header" let-columns>
+              <tr>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field" [pSortableColumnDisabled]="col.field === 'action'"  >
+                  {{col.header}}
+                  <p-sortIcon  *ngIf="col.field !== 'action'"[field]="col.field"></p-sortIcon>
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+              <tr [pSelectableRow]="rowData">
+
+                <td *ngFor="let col of columns" [ngSwitch]="col.field" >
+
+                  <ng-container *ngSwitchCase="'transaction.amount'">
+                    {{rowData['transaction'].amount}}
+                  </ng-container>
+
+                  <ng-container *ngSwitchCase="'createdAt'">
+                    {{rowData[col.field]| date}}
+                  </ng-container>
+
+
+                  <ng-container *ngSwitchCase="'updatedAt'">
+                    {{rowData[col.field] | date}}
+                  </ng-container>
+
+                  <ng-container *ngSwitchCase="'status'">
+                    <span *ngIf="(rowData['status'] ==='ACCEPTED')" class="badge badge-dot">
+                  <i class="bg-success"></i> {{rowData['status']}}
+                </span>
+                    <span *ngIf="(rowData['status'] ==='PENDING')" class="badge badge-dot">
+                  <i class="bg-primary"></i> {{rowData['status']}}
+                </span>
+                    <span *ngIf="(rowData['status'] ==='REFUSED')" class="badge badge-dot mr-4">
+                  <i class="bg-danger"></i> {{rowData['status']}}
+                </span>
+                    <span *ngIf="(rowData['status'] ==='PROCESSING')" class="badge badge-dot">
+                  <i class="bg-warning"></i> {{rowData['status']}}
+                </span>
+                  </ng-container>
+
+                  <ng-container *ngSwitchCase="'action'">
+                    <a (click)="goToDetails(rowData['id'])" class="btn btn-sm btn-info mr-4">Details</a>
+
+                  </ng-container>
+
+
+                  <ng-container      *ngSwitchDefault>
+                    {{rowData[col.field] }}
+                  </ng-container>
+
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

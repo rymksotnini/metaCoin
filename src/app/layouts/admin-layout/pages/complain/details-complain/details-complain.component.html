@@ -1,0 +1,141 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" >
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+  <!-- Header container -->
+  <div class="container-fluid d-flex align-items-center">
+    <div class="row">
+      <div class="col-lg-7 col-md-10">
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+      <div class="card card-profile shadow">
+        <div class="row justify-content-center">
+          <div class="col-lg-3 order-lg-2">
+            <div class="card-profile-image">
+              <a href="javascript:void(0)">
+                <img [src]="image" class="rounded-circle">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+
+        </div>
+        <div class="card-body pt-0 pt-md-4">
+          <div class="row">
+            <div class="col">
+              <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+                <div>
+                  <span class="heading">{{complain?.user?.profile?.totalDonatedAmount}}</span>
+                  <span class="description">Contribution</span>
+                </div>
+                <div>
+                  <span class="heading">{{complain?.user?.profile?.balance}}</span>
+                  <span class="description">Wallet</span>
+                </div>
+                <div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <h3>
+              {{complain?.user?.username}}
+            </h3>
+            <div class="h5 font-weight-300">
+              <i class="ni location_pin mr-2"></i>{{complain?.user?.first_name }} , {{complain?.user?.last_name}}
+            </div>
+            <div class="h5 mt-4">
+              <i class="ni business_briefcase-24 mr-2"></i>{{complain?.user?.profile?.gender}} - {{complain?.user?.profile?.birth_date | date}}
+            </div>
+            <div>
+
+            </div>
+            <hr class="my-4" />
+            <p>{{complain?.user?.email}}</p>
+            <p>{{complain?.user?.profile?.phone_number}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-8 order-xl-1">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-4">
+              <h3 class="mb-0">Complain</h3>
+              <h6 class="mb-0">Status: {{complain?.status }} </h6>
+              <h6 class="mb-0">Send at: {{complain?.created_at | date}} </h6>
+              <h6 class="mb-0">From: {{complain?.user?.username }} </h6>
+            </div>
+            <div class="col-8 text-right">
+              <button *ngIf="complain?.status != 'PROCESSING'" (click)="processing()" type="submit" class="btn btn-sm btn-primary">Processing</button>
+              <button *ngIf="complain?.status != 'ACCEPTED'" (click)="accept()" type="submit" class="btn btn-sm btn-success">Accept</button>
+              <button *ngIf="complain?.status != 'REFUSED'" (click)="decline()" type="submit" class="btn btn-sm  ant-btn-danger ">Decline</button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+
+          <form>
+            <h6 class="heading-small text-muted mb-4">Complain information</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="form-group">
+                    <label class="form-control-label" >Reason</label>
+                    <input  *ngIf="complain?.reason == 'AE'" [disabled]="true" type="text"  class="form-control form-control-alternative"  value="Amount Error">
+                    <input  *ngIf="complain?.reason == 'SE'" [disabled]="true" type="text"  class="form-control form-control-alternative"  value="Sum Error">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="form-control-label">Body</label>
+                    <textarea [disabled]="true" rows="4" class="form-control form-control-alternative" >{{complain?.body}}</textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="my-4" />
+            <!-- Address -->
+            <h6 class="heading-small text-muted mb-1">Transaction information</h6>
+            <h5 class="mb-4 heading-small text-muted">Send at: {{complain?.transaction.created_at | date}} </h5>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" >Amount</label>
+                    <input [disabled]="true"  class="form-control form-control-alternative"  value="{{complain?.transaction?.amount}}" type="text">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" >Project : {{complain?.transaction?.offer?.id}}</label>
+                    <input type="text" [disabled]="true"  class="form-control form-control-alternative"  value="{{complain?.transaction?.offer?.name}}">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="form-control-label">Body</label>
+                    <textarea [disabled]="true" rows="4" class="form-control form-control-alternative" >{{complain?.transaction?.offer?.long_description}}</textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

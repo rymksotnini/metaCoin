@@ -24,6 +24,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TableModule} from 'primeng/table';
 import {PaginatorModule} from 'primeng/paginator';
 import {MultiSelectModule} from 'primeng/multiselect';
+import {DetailsComplainComponent} from './pages/complain/details-complain/details-complain.component';
+import {ListComplainComponent} from './pages/complain/list-complain/list-complain.component';
 
 @NgModule({
   imports: [
@@ -44,6 +46,8 @@ import {MultiSelectModule} from 'primeng/multiselect';
     NavbarComponent
   ],
   declarations: [
+    DetailsComplainComponent,
+    ListComplainComponent,
     AdminSidebarComponent,
     NavbarComponent,
     AccountsCreateComponent,

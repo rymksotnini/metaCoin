@@ -1,6 +1,7 @@
 import {environment} from '../../environments/environment';
 
 export const API_URL = environment.apiUrl + '/api';
+export const DETAILS = '/details';
 export const CHARITY = '/projects';
 export const COMPLAIN = '/complains';
 export const IMAGE = '/image';

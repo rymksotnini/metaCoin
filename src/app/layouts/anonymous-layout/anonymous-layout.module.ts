@@ -49,6 +49,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     NgbDropdownModule,
     MatSnackBarModule,
     FormsModule
+  ],
+  exports: [
+
   ]
 })
 export class AnonymousLayoutModule { }
